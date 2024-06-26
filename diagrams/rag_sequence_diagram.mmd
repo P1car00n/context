@@ -1,0 +1,24 @@
+sequenceDiagram
+  actor User
+
+  box Retrieval
+    participant QueryProcessor as Query Processor
+    participant Retriever
+    participant ExternalKnowledgeBase as External Knowledge Base 📚
+    participant DocumentRanker as Document Ranker
+  end
+  box Generation
+    participant Generator
+    participant Response
+  end
+
+  User->>QueryProcessor: Submit Query
+  QueryProcessor->>Retriever: Process Query
+  Retriever->>ExternalKnowledgeBase: Retrieve Documents
+  ExternalKnowledgeBase-->>Retriever: Return Documents
+  Retriever->>DocumentRanker: Rank Documents
+  DocumentRanker-->>Retriever: Return Ranked Documents
+  Retriever-->>Generator: Pass Ranked Documents
+  QueryProcessor->>Generator: Pass Processed Query
+  Generator-->>Response: Generate Response
+  Response-->>User: Return Response
