@@ -1,0 +1,13 @@
+flowchart TB
+  User["User 🧔‍♂️"]
+  Query[/"Query ❓"/]
+  Datastore[("Datastore 📚")]
+  LLM["LLM 🧠"]
+  Response[/"Response 📄"/]
+
+  User-->|"Sends"|Query
+  Query-->|"Retrieves data from"|Datastore
+  Datastore-->|"Provides data to"|Query
+  Query-->|"Forwards to"|LLM
+  LLM-->|"Generates response"|Response
+  Response-->|"Returns to"|User
