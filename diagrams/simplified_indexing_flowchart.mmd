@@ -1,0 +1,25 @@
+flowchart TB
+  Start("Begin Indexing Process")
+  DocumentCollection("Document Collection 📑")
+  Cleaning("Cleaning 🧹")
+  Normalizing("Normalizing 🔄")
+  Chunking{"Document Chunking 🧩"}
+  BySentence("By Sentence")
+  ByParagraph("By Paragraph")
+  FixedLength("Fixed Length")
+  Indexing("Indexing Creating Embeddings")
+  Storage("Storage 📚")
+  Retrieval("Ready for Retrieval")
+
+  Start-->DocumentCollection
+  DocumentCollection-->Cleaning
+  Cleaning-->Normalizing
+  Normalizing-->Chunking
+  Chunking-->BySentence
+  Chunking-->ByParagraph
+  Chunking-->FixedLength
+  BySentence-->Indexing
+  ByParagraph-->Indexing
+  FixedLength-->Indexing
+  Indexing-->Storage
+  Storage-->Retrieval
