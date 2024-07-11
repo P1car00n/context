@@ -1,0 +1,63 @@
+[project]
+name = "thesis"
+requires-python = ">= 3.12"
+
+[tool.ruff]
+line-length = 80
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["ALL"]
+# Disable PT (pytest) checks, as unittest is used.
+ignore = ["PT"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[pycodestyle]
+max-line-length = 88
+
+jobs = 0
+recursive = true
+load-plugins = [
+    "pylint.extensions.docparams",
+    "pylint.extensions.docstyle",
+    "pylint.extensions.broad_try_clause",
+    "pylint.extensions.code_style",
+    "pylint.extensions.comparison_placement",
+    "pylint.extensions.confusing_elif",
+    "pylint.extensions.for_any_all",
+    "pylint.extensions.consider_refactoring_into_while_condition",
+    "pylint.extensions.consider_ternary_expression",
+    "pylint.extensions.bad_builtin",
+    "pylint.extensions.mccabe",
+    "pylint.extensions.dict_init_mutate",
+    "pylint.extensions.docstyle",
+    "pylint.extensions.dunder",
+    "pylint.extensions.check_elif",
+    "pylint.extensions.empty_comment",
+    "pylint.extensions.eq_without_hash",
+    "pylint.extensions.private_import",
+    "pylint.extensions.magic_value",
+    "pylint.extensions.redefined_variable_type",
+    "pylint.extensions.no_self_use",
+    "pylint.extensions.overlapping_exceptions",
+    "pylint.extensions.docparams",
+    "pylint.extensions.redefined_loop_name",
+    "pylint.extensions.set_membership",
+    "pylint.extensions.typing",
+    "pylint.extensions.while_used",
+]
+
+[tool.pylint.basic]
+include-naming-hint = true
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint.string]
+check-quote-consistency = true
+check-str-concat-over-line-jumps = true
