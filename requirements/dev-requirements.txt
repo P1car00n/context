@@ -16,18 +16,51 @@ anyio==4.4.0
     # via
     #   -r requirements/requirements.txt
     #   httpx
+    #   jupyter-server
+    #   openai
     #   starlette
     #   watchfiles
+appnope==0.1.4
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+argon2-cffi==23.1.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-server
+argon2-cffi-bindings==21.2.0
+    # via
+    #   -r requirements/requirements.txt
+    #   argon2-cffi
+arrow==1.3.0
+    # via
+    #   -r requirements/requirements.txt
+    #   isoduration
 asgiref==3.8.1
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-instrumentation-asgi
-astroid==3.2.2
+astroid==3.2.3
     # via pylint
+asttokens==2.4.1
+    # via
+    #   -r requirements/requirements.txt
+    #   stack-data
+async-lru==2.0.4
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyterlab
 attrs==23.2.0
     # via
     #   -r requirements/requirements.txt
     #   aiohttp
+    #   cattrs
+    #   jsonschema
+    #   referencing
+babel==2.15.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyterlab-server
 backoff==2.2.1
     # via
     #   -r requirements/requirements.txt
@@ -36,14 +69,31 @@ bcrypt==4.1.3
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+beautifulsoup4==4.12.3
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
+bleach==6.1.0
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
 build==1.2.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+    #   poetry
+cachecontrol==0.14.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 cachetools==5.3.3
     # via
     #   -r requirements/requirements.txt
     #   google-auth
+cattrs==23.2.3
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
 certifi==2024.7.4
     # via
     #   -r requirements/requirements.txt
@@ -51,6 +101,11 @@ certifi==2024.7.4
     #   httpx
     #   kubernetes
     #   requests
+cffi==1.16.0
+    # via
+    #   -r requirements/requirements.txt
+    #   argon2-cffi-bindings
+    #   xattr
 charset-normalizer==3.3.2
     # via
     #   -r requirements/requirements.txt
@@ -63,6 +118,10 @@ chromadb==0.5.4
     # via
     #   -r requirements/requirements.txt
     #   langchain-chroma
+cleo==2.1.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 click==8.1.7
     # via
     #   -r requirements/requirements.txt
@@ -72,8 +131,34 @@ coloredlogs==15.0.1
     # via
     #   -r requirements/requirements.txt
     #   onnxruntime
-coverage==7.5.3
+comm==0.2.2
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+    #   ipywidgets
+contextvars==2.4
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
+coverage==7.6.0
     # via -r requirements/dev-requirements.in
+crashtest==0.4.1
+    # via
+    #   -r requirements/requirements.txt
+    #   cleo
+    #   poetry
+debugpy==1.8.2
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+decorator==5.1.1
+    # via
+    #   -r requirements/requirements.txt
+    #   ipython
+defusedxml==0.7.1
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
 deprecated==1.2.14
     # via
     #   -r requirements/requirements.txt
@@ -81,15 +166,31 @@ deprecated==1.2.14
     #   opentelemetry-exporter-otlp-proto-grpc
 dill==0.3.8
     # via pylint
+distlib==0.3.8
+    # via
+    #   -r requirements/requirements.txt
+    #   virtualenv
+distro==1.9.0
+    # via
+    #   -r requirements/requirements.txt
+    #   openai
 dnspython==2.6.1
     # via
     #   -r requirements/requirements.txt
     #   email-validator
+dulwich==0.21.7
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 email-validator==2.2.0
     # via
     #   -r requirements/requirements.txt
     #   fastapi
-fastapi==0.111.0
+executing==2.0.1
+    # via
+    #   -r requirements/requirements.txt
+    #   stack-data
+fastapi==0.111.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
@@ -98,16 +199,27 @@ fastapi-cli==0.0.4
     # via
     #   -r requirements/requirements.txt
     #   fastapi
+fastjsonschema==2.20.0
+    # via
+    #   -r requirements/requirements.txt
+    #   nbformat
+    #   poetry
 filelock==3.15.4
     # via
     #   -r requirements/requirements.txt
+    #   cachecontrol
     #   huggingface-hub
     #   torch
     #   transformers
+    #   virtualenv
 flatbuffers==24.3.25
     # via
     #   -r requirements/requirements.txt
     #   onnxruntime
+fqdn==1.5.1
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
 frozenlist==1.4.1
     # via
     #   -r requirements/requirements.txt
@@ -130,7 +242,7 @@ greenlet==3.0.3
     # via
     #   -r requirements/requirements.txt
     #   sqlalchemy
-grpcio==1.65.0
+grpcio==1.64.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
@@ -153,6 +265,9 @@ httpx==0.27.0
     #   -r requirements/requirements.txt
     #   chromadb
     #   fastapi
+    #   jupyterlab
+    #   openai
+    #   parea-ai
 huggingface-hub==0.23.4
     # via
     #   -r requirements/requirements.txt
@@ -170,8 +285,13 @@ idna==3.7
     #   anyio
     #   email-validator
     #   httpx
+    #   jsonschema
     #   requests
     #   yarl
+immutables==0.20
+    # via
+    #   -r requirements/requirements.txt
+    #   contextvars
 importlib-metadata==7.1.0
     # via
     #   -r requirements/requirements.txt
@@ -180,17 +300,58 @@ importlib-resources==6.4.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+installer==0.7.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
+ipykernel==6.29.5
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter
+    #   jupyter-console
+    #   jupyterlab
+    #   qtconsole
+ipython==8.26.0
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+    #   ipywidgets
+    #   jupyter-console
+ipywidgets==8.1.3
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter
+isoduration==20.11.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
 isort==5.13.2
     # via pylint
+jaraco-classes==3.4.0
+    # via
+    #   -r requirements/requirements.txt
+    #   keyring
+jedi==0.19.1
+    # via
+    #   -r requirements/requirements.txt
+    #   ipython
 jinja2==3.1.4
     # via
     #   -r requirements/requirements.txt
     #   fastapi
+    #   jupyter-server
+    #   jupyterlab
+    #   jupyterlab-server
+    #   nbconvert
     #   torch
 joblib==1.4.2
     # via
     #   -r requirements/requirements.txt
     #   scikit-learn
+json5==0.9.25
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyterlab-server
 jsonpatch==1.33
     # via
     #   -r requirements/requirements.txt
@@ -199,15 +360,95 @@ jsonpointer==3.0.0
     # via
     #   -r requirements/requirements.txt
     #   jsonpatch
+    #   jsonschema
+jsonschema==4.23.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-events
+    #   jupyterlab-server
+    #   nbformat
+jsonschema-specifications==2023.12.1
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
+jupyter==1.0.0
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
+jupyter-client==8.6.2
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+    #   jupyter-console
+    #   jupyter-server
+    #   nbclient
+    #   qtconsole
+jupyter-console==6.6.3
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter
+jupyter-core==5.7.2
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+    #   jupyter-client
+    #   jupyter-console
+    #   jupyter-server
+    #   jupyterlab
+    #   nbclient
+    #   nbconvert
+    #   nbformat
+    #   qtconsole
+jupyter-events==0.10.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-server
+jupyter-lsp==2.2.5
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyterlab
+jupyter-server==2.14.2
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-lsp
+    #   jupyterlab
+    #   jupyterlab-server
+    #   notebook
+    #   notebook-shim
+jupyter-server-terminals==0.5.3
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-server
+jupyterlab==4.2.3
+    # via
+    #   -r requirements/requirements.txt
+    #   notebook
+jupyterlab-pygments==0.3.0
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
+jupyterlab-server==2.27.2
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyterlab
+    #   notebook
+jupyterlab-widgets==3.0.11
+    # via
+    #   -r requirements/requirements.txt
+    #   ipywidgets
+keyring==24.3.1
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 kubernetes==30.1.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-langchain==0.2.7
+langchain==0.2.8
     # via -r requirements/requirements.txt
 langchain-chroma==0.1.2
     # via -r requirements/requirements.txt
-langchain-core==0.2.13
+langchain-core==0.2.19
     # via
     #   -r requirements/requirements.txt
     #   langchain
@@ -225,6 +466,10 @@ langsmith==0.1.85
     #   -r requirements/requirements.txt
     #   langchain
     #   langchain-core
+levenshtein==0.25.1
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
 markdown-it-py==3.0.0
     # via
     #   -r requirements/requirements.txt
@@ -233,12 +478,22 @@ markupsafe==2.1.5
     # via
     #   -r requirements/requirements.txt
     #   jinja2
+    #   nbconvert
+matplotlib-inline==0.1.7
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+    #   ipython
 mccabe==0.7.0
     # via pylint
 mdurl==0.1.2
     # via
     #   -r requirements/requirements.txt
     #   markdown-it-py
+mistune==3.0.2
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
 mmh3==4.1.0
     # via
     #   -r requirements/requirements.txt
@@ -247,19 +502,55 @@ monotonic==1.6
     # via
     #   -r requirements/requirements.txt
     #   posthog
+more-itertools==10.3.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jaraco-classes
 mpmath==1.3.0
     # via
     #   -r requirements/requirements.txt
     #   sympy
+msgpack==1.0.8
+    # via
+    #   -r requirements/requirements.txt
+    #   cachecontrol
 multidict==6.0.5
     # via
     #   -r requirements/requirements.txt
     #   aiohttp
     #   yarl
+nbclient==0.10.0
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
+nbconvert==7.16.4
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter
+    #   jupyter-server
+nbformat==5.10.4
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-server
+    #   nbclient
+    #   nbconvert
+nest-asyncio==1.6.0
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
 networkx==3.3
     # via
     #   -r requirements/requirements.txt
     #   torch
+notebook==7.2.1
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter
+notebook-shim==0.2.4
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyterlab
+    #   notebook
 numpy==1.26.4
     # via
     #   -r requirements/requirements.txt
@@ -281,6 +572,10 @@ onnxruntime==1.18.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+openai==1.35.13
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
 opentelemetry-api==1.25.0
     # via
     #   -r requirements/requirements.txt
@@ -337,36 +632,108 @@ orjson==3.10.6
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-    #   fastapi
     #   langsmith
 overrides==7.7.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+    #   jupyter-server
 packaging==24.1
     # via
     #   -r requirements/requirements.txt
     #   build
     #   huggingface-hub
+    #   ipykernel
+    #   jupyter-server
+    #   jupyterlab
+    #   jupyterlab-server
     #   langchain-core
+    #   nbconvert
     #   onnxruntime
+    #   poetry
+    #   qtconsole
+    #   qtpy
     #   transformers
+pandocfilters==1.5.1
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
+parea-ai==0.2.186
+    # via -r requirements/requirements.txt
+parso==0.8.4
+    # via
+    #   -r requirements/requirements.txt
+    #   jedi
+pexpect==4.9.0
+    # via
+    #   -r requirements/requirements.txt
+    #   ipython
+    #   poetry
 pillow==10.4.0
     # via
     #   -r requirements/requirements.txt
     #   sentence-transformers
+pkginfo==1.11.1
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 platformdirs==4.2.2
-    # via pylint
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-core
+    #   poetry
+    #   pylint
+    #   virtualenv
+poetry==1.8.3
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry-plugin-dotenv
+    #   poetry-plugin-export
+poetry-core==1.9.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
+    #   poetry-plugin-export
+poetry-plugin-dotenv==0.6.33
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
+poetry-plugin-export==1.8.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 posthog==3.5.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+prometheus-client==0.20.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-server
+prompt-toolkit==3.0.47
+    # via
+    #   -r requirements/requirements.txt
+    #   ipython
+    #   jupyter-console
 protobuf==4.25.3
     # via
     #   -r requirements/requirements.txt
     #   googleapis-common-protos
     #   onnxruntime
     #   opentelemetry-proto
+psutil==6.0.0
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+ptyprocess==0.7.0
+    # via
+    #   -r requirements/requirements.txt
+    #   pexpect
+    #   terminado
+pure-eval==0.2.2
+    # via
+    #   -r requirements/requirements.txt
+    #   stack-data
 pyasn1==0.6.0
     # via
     #   -r requirements/requirements.txt
@@ -376,6 +743,10 @@ pyasn1-modules==0.4.0
     # via
     #   -r requirements/requirements.txt
     #   google-auth
+pycparser==2.22
+    # via
+    #   -r requirements/requirements.txt
+    #   cffi
 pydantic==2.8.2
     # via
     #   -r requirements/requirements.txt
@@ -384,6 +755,7 @@ pydantic==2.8.2
     #   langchain
     #   langchain-core
     #   langsmith
+    #   openai
 pydantic-core==2.20.1
     # via
     #   -r requirements/requirements.txt
@@ -393,8 +765,12 @@ pyenchant==3.2.2
 pygments==2.18.0
     # via
     #   -r requirements/requirements.txt
+    #   ipython
+    #   jupyter-console
+    #   nbconvert
+    #   qtconsole
     #   rich
-pylint==3.2.2
+pylint==3.2.5
     # via -r requirements/dev-requirements.in
 pypika==0.48.9
     # via
@@ -404,56 +780,129 @@ pyproject-hooks==1.1.0
     # via
     #   -r requirements/requirements.txt
     #   build
+    #   poetry
+pysbd==0.3.4
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
 python-dateutil==2.9.0.post0
     # via
     #   -r requirements/requirements.txt
+    #   arrow
+    #   jupyter-client
     #   kubernetes
     #   posthog
 python-dotenv==1.0.1
     # via
     #   -r requirements/requirements.txt
+    #   parea-ai
     #   uvicorn
+python-json-logger==2.0.7
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-events
 python-multipart==0.0.9
     # via
     #   -r requirements/requirements.txt
     #   fastapi
+pytz==2024.1
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
+pyupgrade==3.16.0
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
 pyyaml==6.0.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
     #   huggingface-hub
+    #   jupyter-events
     #   kubernetes
     #   langchain
     #   langchain-core
     #   transformers
     #   uvicorn
+pyzmq==26.0.3
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+    #   jupyter-client
+    #   jupyter-console
+    #   jupyter-server
+    #   qtconsole
+qtconsole==5.5.2
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter
+qtpy==2.4.1
+    # via
+    #   -r requirements/requirements.txt
+    #   qtconsole
+rapidfuzz==3.9.4
+    # via
+    #   -r requirements/requirements.txt
+    #   cleo
+    #   levenshtein
+referencing==0.35.1
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
+    #   jsonschema-specifications
+    #   jupyter-events
 regex==2024.5.15
     # via
     #   -r requirements/requirements.txt
+    #   tiktoken
     #   transformers
 requests==2.32.3
     # via
     #   -r requirements/requirements.txt
+    #   cachecontrol
     #   huggingface-hub
+    #   jupyterlab-server
     #   kubernetes
     #   langchain
     #   langsmith
+    #   poetry
     #   posthog
     #   requests-oauthlib
+    #   requests-toolbelt
+    #   tiktoken
     #   transformers
 requests-oauthlib==2.0.0
     # via
     #   -r requirements/requirements.txt
     #   kubernetes
+requests-toolbelt==1.0.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
+rfc3339-validator==0.1.4
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
+    #   jupyter-events
+rfc3986-validator==0.1.1
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
+    #   jupyter-events
 rich==13.7.1
     # via
     #   -r requirements/requirements.txt
     #   typer
+rpds-py==0.19.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
+    #   referencing
 rsa==4.9
     # via
     #   -r requirements/requirements.txt
     #   google-auth
-ruff==0.4.6
+ruff==0.5.2
     # via -r requirements/dev-requirements.in
 safetensors==0.4.3
     # via
@@ -468,6 +917,10 @@ scipy==1.14.0
     #   -r requirements/requirements.txt
     #   scikit-learn
     #   sentence-transformers
+send2trash==1.8.3
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-server
 sentence-transformers==3.0.1
     # via
     #   -r requirements/requirements.txt
@@ -475,26 +928,40 @@ sentence-transformers==3.0.1
 setuptools==70.3.0
     # via
     #   -r requirements/requirements.txt
+    #   jupyterlab
     #   opentelemetry-instrumentation
 shellingham==1.5.4
     # via
     #   -r requirements/requirements.txt
+    #   poetry
     #   typer
 six==1.16.0
     # via
     #   -r requirements/requirements.txt
+    #   asttokens
+    #   bleach
     #   kubernetes
     #   posthog
     #   python-dateutil
+    #   rfc3339-validator
 sniffio==1.3.1
     # via
     #   -r requirements/requirements.txt
     #   anyio
     #   httpx
+    #   openai
+soupsieve==2.5
+    # via
+    #   -r requirements/requirements.txt
+    #   beautifulsoup4
 sqlalchemy==2.0.31
     # via
     #   -r requirements/requirements.txt
     #   langchain
+stack-data==0.6.3
+    # via
+    #   -r requirements/requirements.txt
+    #   ipython
 starlette==0.37.2
     # via
     #   -r requirements/requirements.txt
@@ -510,58 +977,116 @@ tenacity==8.5.0
     #   chromadb
     #   langchain
     #   langchain-core
+terminado==0.18.1
+    # via
+    #   -r requirements/requirements.txt
+    #   jupyter-server
+    #   jupyter-server-terminals
 threadpoolctl==3.5.0
     # via
     #   -r requirements/requirements.txt
     #   scikit-learn
+tiktoken==0.7.0
+    # via
+    #   -r requirements/requirements.txt
+    #   parea-ai
+tinycss2==1.3.0
+    # via
+    #   -r requirements/requirements.txt
+    #   nbconvert
+tokenize-rt==5.2.0
+    # via
+    #   -r requirements/requirements.txt
+    #   pyupgrade
 tokenizers==0.19.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
     #   langchain-huggingface
     #   transformers
-tomlkit==0.12.5
-    # via pylint
+tomlkit==0.13.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
+    #   pylint
 torch==2.2.2
     # via
     #   -r requirements/requirements.txt
     #   sentence-transformers
+tornado==6.4.1
+    # via
+    #   -r requirements/requirements.txt
+    #   ipykernel
+    #   jupyter-client
+    #   jupyter-server
+    #   jupyterlab
+    #   notebook
+    #   terminado
 tqdm==4.66.4
     # via
     #   -r requirements/requirements.txt
     #   chromadb
     #   huggingface-hub
+    #   openai
     #   sentence-transformers
     #   transformers
-transformers==4.42.3
+traitlets==5.14.3
+    # via
+    #   -r requirements/requirements.txt
+    #   comm
+    #   ipykernel
+    #   ipython
+    #   ipywidgets
+    #   jupyter-client
+    #   jupyter-console
+    #   jupyter-core
+    #   jupyter-events
+    #   jupyter-server
+    #   jupyterlab
+    #   matplotlib-inline
+    #   nbclient
+    #   nbconvert
+    #   nbformat
+    #   qtconsole
+transformers==4.42.4
     # via
     #   -r requirements/requirements.txt
     #   langchain-huggingface
     #   sentence-transformers
+trove-classifiers==2024.7.2
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 typer==0.12.3
     # via
     #   -r requirements/requirements.txt
     #   chromadb
     #   fastapi-cli
-typing-extensions==4.12.0
+types-python-dateutil==2.9.0.20240316
+    # via
+    #   -r requirements/requirements.txt
+    #   arrow
+typing-extensions==4.12.2
     # via
     #   -r requirements/requirements.txt
     #   chromadb
     #   fastapi
     #   huggingface-hub
+    #   openai
     #   opentelemetry-sdk
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
     #   torch
     #   typer
-ujson==5.10.0
+uri-template==1.3.0
     # via
     #   -r requirements/requirements.txt
-    #   fastapi
+    #   jsonschema
 urllib3==2.2.2
     # via
     #   -r requirements/requirements.txt
+    #   dulwich
     #   kubernetes
     #   requests
 uvicorn==0.30.1
@@ -573,23 +1098,50 @@ uvloop==0.19.0
     # via
     #   -r requirements/requirements.txt
     #   uvicorn
+virtualenv==20.26.3
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 watchfiles==0.22.0
     # via
     #   -r requirements/requirements.txt
     #   uvicorn
+wcwidth==0.2.13
+    # via
+    #   -r requirements/requirements.txt
+    #   prompt-toolkit
+webcolors==24.6.0
+    # via
+    #   -r requirements/requirements.txt
+    #   jsonschema
+webencodings==0.5.1
+    # via
+    #   -r requirements/requirements.txt
+    #   bleach
+    #   tinycss2
 websocket-client==1.8.0
     # via
     #   -r requirements/requirements.txt
+    #   jupyter-server
     #   kubernetes
 websockets==12.0
     # via
     #   -r requirements/requirements.txt
     #   uvicorn
+widgetsnbextension==4.0.11
+    # via
+    #   -r requirements/requirements.txt
+    #   ipywidgets
 wrapt==1.16.0
     # via
     #   -r requirements/requirements.txt
     #   deprecated
     #   opentelemetry-instrumentation
+    #   parea-ai
+xattr==1.1.0
+    # via
+    #   -r requirements/requirements.txt
+    #   poetry
 yarl==1.9.4
     # via
     #   -r requirements/requirements.txt
