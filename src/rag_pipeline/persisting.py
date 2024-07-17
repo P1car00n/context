@@ -35,7 +35,7 @@ class ChromaStorage(BaseStorage):
         """Instantiate ChromaStorage.
 
         Args:
-            docs: Textual data from which ti create embeddings for vector
+            docs: Textual data from which to create embeddings for vector
                 storage.
             embedding: Model to use to generate embeddings.
             kwargs: key-word arguments to pass to the underlying storage
