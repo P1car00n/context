@@ -4,6 +4,7 @@ aiohttp==3.9.5
     # via
     #   -r requirements/requirements.txt
     #   langchain
+    #   langchain-community
 aiosignal==1.3.1
     # via
     #   -r requirements/requirements.txt
@@ -86,7 +87,7 @@ cachecontrol==0.14.0
     # via
     #   -r requirements/requirements.txt
     #   poetry
-cachetools==5.3.3
+cachetools==5.4.0
     # via
     #   -r requirements/requirements.txt
     #   google-auth
@@ -147,6 +148,10 @@ crashtest==0.4.1
     #   -r requirements/requirements.txt
     #   cleo
     #   poetry
+dataclasses-json==0.6.7
+    # via
+    #   -r requirements/requirements.txt
+    #   langchain-community
 debugpy==1.8.2
     # via
     #   -r requirements/requirements.txt
@@ -242,7 +247,7 @@ greenlet==3.0.3
     # via
     #   -r requirements/requirements.txt
     #   sqlalchemy
-grpcio==1.64.1
+grpcio==1.65.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
@@ -268,7 +273,7 @@ httpx==0.27.0
     #   jupyterlab
     #   openai
     #   parea-ai
-huggingface-hub==0.23.4
+huggingface-hub==0.23.5
     # via
     #   -r requirements/requirements.txt
     #   langchain-huggingface
@@ -427,7 +432,7 @@ jupyterlab-pygments==0.3.0
     # via
     #   -r requirements/requirements.txt
     #   nbconvert
-jupyterlab-server==2.27.2
+jupyterlab-server==2.27.3
     # via
     #   -r requirements/requirements.txt
     #   jupyterlab
@@ -444,27 +449,38 @@ kubernetes==30.1.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-langchain==0.2.8
-    # via -r requirements/requirements.txt
+langchain==0.2.9
+    # via
+    #   -r requirements/requirements.txt
+    #   langchain-community
 langchain-chroma==0.1.2
     # via -r requirements/requirements.txt
-langchain-core==0.2.19
+langchain-community==0.2.7
+    # via
+    #   -r requirements/requirements.txt
+    #   langchain-experimental
+langchain-core==0.2.21
     # via
     #   -r requirements/requirements.txt
     #   langchain
     #   langchain-chroma
+    #   langchain-community
+    #   langchain-experimental
     #   langchain-huggingface
     #   langchain-text-splitters
+langchain-experimental==0.0.62
+    # via -r requirements/requirements.txt
 langchain-huggingface==0.0.3
     # via -r requirements/requirements.txt
 langchain-text-splitters==0.2.2
     # via
     #   -r requirements/requirements.txt
     #   langchain
-langsmith==0.1.85
+langsmith==0.1.90
     # via
     #   -r requirements/requirements.txt
     #   langchain
+    #   langchain-community
     #   langchain-core
 levenshtein==0.25.1
     # via
@@ -479,6 +495,10 @@ markupsafe==2.1.5
     #   -r requirements/requirements.txt
     #   jinja2
     #   nbconvert
+marshmallow==3.21.3
+    # via
+    #   -r requirements/requirements.txt
+    #   dataclasses-json
 matplotlib-inline==0.1.7
     # via
     #   -r requirements/requirements.txt
@@ -519,6 +539,10 @@ multidict==6.0.5
     #   -r requirements/requirements.txt
     #   aiohttp
     #   yarl
+mypy-extensions==1.0.0
+    # via
+    #   -r requirements/requirements.txt
+    #   typing-inspect
 nbclient==0.10.0
     # via
     #   -r requirements/requirements.txt
@@ -558,6 +582,7 @@ numpy==1.26.4
     #   chromadb
     #   langchain
     #   langchain-chroma
+    #   langchain-community
     #   onnxruntime
     #   scikit-learn
     #   scipy
@@ -572,7 +597,7 @@ onnxruntime==1.18.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-openai==1.35.13
+openai==1.35.14
     # via
     #   -r requirements/requirements.txt
     #   parea-ai
@@ -648,6 +673,7 @@ packaging==24.1
     #   jupyterlab
     #   jupyterlab-server
     #   langchain-core
+    #   marshmallow
     #   nbconvert
     #   onnxruntime
     #   poetry
@@ -821,6 +847,7 @@ pyyaml==6.0.1
     #   jupyter-events
     #   kubernetes
     #   langchain
+    #   langchain-community
     #   langchain-core
     #   transformers
     #   uvicorn
@@ -864,6 +891,7 @@ requests==2.32.3
     #   jupyterlab-server
     #   kubernetes
     #   langchain
+    #   langchain-community
     #   langsmith
     #   poetry
     #   posthog
@@ -925,7 +953,7 @@ sentence-transformers==3.0.1
     # via
     #   -r requirements/requirements.txt
     #   langchain-huggingface
-setuptools==70.3.0
+setuptools==71.0.1
     # via
     #   -r requirements/requirements.txt
     #   jupyterlab
@@ -958,6 +986,7 @@ sqlalchemy==2.0.31
     # via
     #   -r requirements/requirements.txt
     #   langchain
+    #   langchain-community
 stack-data==0.6.3
     # via
     #   -r requirements/requirements.txt
@@ -976,6 +1005,7 @@ tenacity==8.5.0
     #   -r requirements/requirements.txt
     #   chromadb
     #   langchain
+    #   langchain-community
     #   langchain-core
 terminado==0.18.1
     # via
@@ -1079,6 +1109,11 @@ typing-extensions==4.12.2
     #   sqlalchemy
     #   torch
     #   typer
+    #   typing-inspect
+typing-inspect==0.9.0
+    # via
+    #   -r requirements/requirements.txt
+    #   dataclasses-json
 uri-template==1.3.0
     # via
     #   -r requirements/requirements.txt
