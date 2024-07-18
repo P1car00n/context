@@ -4,7 +4,7 @@ All adhere to the strategy pattern as currently implemented.
 """
 
 import abc
-import enum
+import io
 import pathlib
 import typing
 
@@ -77,50 +77,52 @@ class RecursiveChunker(BaseChunker):
         return self.text_splitter.create_documents([text])
 
 
-class HTMLChunkingMethod(enum.Enum):
-    """Decide on the type of chunking to perform."""
+class HTMLHeaderChunker(BaseChunker):
+    """Split an HTML document by headers.
 
-    HEADER = enum.auto()
-    SECTION = enum.auto()
-
-
-class HTMLChunker(BaseChunker):
-    """Split an HTML document.
-
-    It is a thin wrapper over `HTMLHeaderTextSplitter`
-    and `HTMLSectionSplitter`.
+    It is a thin wrapper over `HTMLHeaderTextSplitter`.
     """
 
     @typing.override
     def __init__(
         self,
-        method: HTMLChunkingMethod,
         doc_path: pathlib.Path,
         **kwargs: typing.Any,
     ) -> None:
-        """See base class.
-
-        Args:
-            method: Decide how to chunk.
-        """
         self.doc_path = doc_path
-        match method:
-            case method.HEADER:
-                self.text_splitter = (
-                    langchain_text_splitters.HTMLHeaderTextSplitter(
-                        **kwargs,
-                    )
-                )
-            case method.SECTION:
-                self.text_splitter = (
-                    langchain_text_splitters.HTMLSectionSplitter(
-                        **kwargs,
-                    )
-                )
+        self.text_splitter = langchain_text_splitters.HTMLHeaderTextSplitter(
+            **kwargs,
+        )
 
     @typing.override
     def chunk(self) -> list[documents.Document]:
         return self.text_splitter.split_text_from_file(self.doc_path)
+
+
+class HTMLSectionChunker(BaseChunker):
+    """Split an HTML document by sections.
+
+    It is a thin wrapper over `HTMLSectionSplitter`.
+    """
+
+    @typing.override
+    def __init__(
+        self,
+        doc_path: pathlib.Path,
+        **kwargs: typing.Any,
+    ) -> None:
+        self.doc_path = doc_path
+        self.text_splitter = langchain_text_splitters.HTMLSectionSplitter(
+            **kwargs,
+        )
+
+    @typing.override
+    def chunk(self) -> list[documents.Document]:
+        with self.doc_path.open() as file:
+            # Workaround for HTMLSectionSplitter which expects
+            # an input stream in an undocumented way.
+            text = file.read()
+        return self.text_splitter.split_text_from_file(io.StringIO(text))
 
 
 class MarkdownHeaderChunker(BaseChunker):

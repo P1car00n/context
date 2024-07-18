@@ -3,4 +3,5 @@ langchain-chroma==0.1.*
 langchain-huggingface==0.0.*
 langchain-experimental==0.0.*
 tiktoken==0.7.*
+lxml==5.2.*
 parea-ai==0.2.*
