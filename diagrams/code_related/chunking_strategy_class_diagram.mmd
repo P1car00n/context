@@ -1,0 +1,101 @@
+---
+title: Chunking strategy
+---
+
+classDiagram
+  direction RL
+
+  class main {
+    +main(*args)
+  }
+  
+  note "Strategy Pattern."
+  note for main "Starting point of the application. Serves as a client."
+  note for BaseChunker "An abstract class serving as an interface in this diagram."
+  note for RAGPipeline "The context of the strategy pattern."
+
+namespace pipeline {
+  class RAGPipeline {
+    +BaseLoading loader
+    +BaseChunker chunker
+    +BaseStorage persister
+    +BaseRetriever retriever
+    +BaseGenerator generator
+    +BaseEvaluation evaluator
+    +process_query(query)
+  }
+}
+
+  namespace Chunkers {
+    class BaseChunker {
+    <<interface>>
+    +chunk() list~Document~
+  }
+
+  class CharacterChunker {
+    +__init__(doc_path, **kwargs)
+    +chunk() list~Document~
+    -Path doc_path
+    -langchain.CharacterTextSplitter text_splitter
+  }
+
+  class RecursiveChunker {
+    +__init__(doc_path, **kwargs)
+    +chunk() list~Document~
+    -Path doc_path
+    -langchain.RecursiveCharacterTextSplitter text_splitter
+  }
+
+  class HTMLHeaderChunker {
+    +__init__(doc_path, **kwargs)
+    +chunk() list~Document~
+    -Path doc_path
+    -langchain.HTMLHeaderTextSplitter text_splitter
+  }
+
+  class HTMLSectionChunker {
+    +__init__(doc_path, **kwargs)
+    +chunk() list~Document~
+    -Path doc_path
+    -langchain.HTMLSectionSplitter text_splitter
+  }
+
+  class MarkdownHeaderChunker {
+    +__init__(doc_path, **kwargs)
+    +chunk() list~Document~
+    -Path doc_path
+    -langchain.MarkdownHeaderTextSplitter text_splitter
+  }
+
+  class SemanticChunker {
+    +__init__(doc_path, embedding_model, **kwargs)
+    +chunk() list~Document~
+    -Path doc_path
+    -langchain.ExperimentalSemanticTextSplitter text_splitter
+  }
+
+  class TokenChunker {
+    +__init__(doc_path, **kwargs)
+    +chunk() list~Document~
+    -Path doc_path
+    -langchain.TokenTextSplitter text_splitter
+  }
+  }
+
+  BaseChunker <|-- CharacterChunker
+  BaseChunker <|-- RecursiveChunker
+  BaseChunker <|-- HTMLHeaderChunker
+  BaseChunker <|-- HTMLSectionChunker
+  BaseChunker <|-- MarkdownHeaderChunker
+  BaseChunker <|-- SemanticChunker
+  BaseChunker <|-- TokenChunker
+  BaseChunker --o RAGPipeline
+  RAGPipeline <|.. main
+  CharacterChunker <.. main
+  RecursiveChunker <.. main
+  HTMLHeaderChunker <.. main
+  HTMLSectionChunker <.. main
+  MarkdownHeaderChunker <.. main
+  SemanticChunker <.. main
+  TokenChunker <.. main
+ 
