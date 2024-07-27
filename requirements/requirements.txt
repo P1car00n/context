@@ -8,6 +8,8 @@ aiosignal==1.3.1
     # via aiohttp
 annotated-types==0.7.0
     # via pydantic
+antlr4-python3-runtime==4.9.3
+    # via omegaconf
 anyio==4.4.0
     # via
     #   httpx
@@ -38,11 +40,15 @@ attrs==23.2.0
 babel==2.15.0
     # via jupyterlab-server
 backoff==2.2.1
-    # via posthog
-bcrypt==4.1.3
+    # via
+    #   posthog
+    #   unstructured
+bcrypt==4.2.0
     # via chromadb
 beautifulsoup4==4.12.3
-    # via nbconvert
+    # via
+    #   nbconvert
+    #   unstructured
 bleach==6.1.0
     # via nbconvert
 build==1.2.1
@@ -61,20 +67,31 @@ certifi==2024.7.4
     #   httpx
     #   kubernetes
     #   requests
+    #   unstructured-client
 cffi==1.16.0
     # via
     #   argon2-cffi-bindings
+    #   cryptography
     #   xattr
+chardet==5.2.0
+    # via
+    #   pdfplumber
+    #   unstructured
 charset-normalizer==3.3.2
-    # via requests
-chroma-hnswlib==0.7.5
+    # via
+    #   pdfminer-six
+    #   requests
+    #   unstructured-client
+chroma-hnswlib==0.7.6
     # via chromadb
-chromadb==0.5.4
+chromadb==0.5.5
     # via langchain-chroma
 cleo==2.1.0
     # via poetry
 click==8.1.7
     # via
+    #   nltk
+    #   python-oxmsg
     #   typer
     #   uvicorn
 coloredlogs==15.0.1
@@ -85,22 +102,35 @@ comm==0.2.2
     #   ipywidgets
 contextvars==2.4
     # via parea-ai
+contourpy==1.2.1
+    # via matplotlib
 crashtest==0.4.1
     # via
     #   cleo
     #   poetry
+cryptography==43.0.0
+    # via pdfminer-six
+cycler==0.12.1
+    # via matplotlib
 dataclasses-json==0.6.7
-    # via langchain-community
+    # via
+    #   langchain-community
+    #   unstructured
+    #   unstructured-client
 debugpy==1.8.2
     # via ipykernel
 decorator==5.1.1
     # via ipython
+deepdiff==7.0.1
+    # via unstructured-client
 defusedxml==0.7.1
     # via nbconvert
 deprecated==1.2.14
     # via
     #   opentelemetry-api
     #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-semantic-conventions
+    #   pikepdf
 distlib==0.3.8
     # via virtualenv
 distro==1.9.0
@@ -109,8 +139,14 @@ dnspython==2.6.1
     # via email-validator
 dulwich==0.21.7
     # via poetry
+effdet==0.4.1
+    # via unstructured
 email-validator==2.2.0
     # via fastapi
+emoji==2.12.1
+    # via unstructured
+et-xmlfile==1.1.0
+    # via openpyxl
 executing==2.0.1
     # via stack-data
 fastapi==0.111.1
@@ -130,8 +166,12 @@ filelock==3.15.4
     #   torch
     #   transformers
     #   virtualenv
+filetype==1.2.0
+    # via unstructured
 flatbuffers==24.3.25
     # via onnxruntime
+fonttools==4.53.1
+    # via matplotlib
 fqdn==1.5.1
     # via jsonschema
 frozenlist==1.4.1
@@ -142,16 +182,30 @@ fsspec==2024.6.1
     # via
     #   huggingface-hub
     #   torch
+google-api-core==2.19.1
+    # via google-cloud-vision
 google-auth==2.32.0
-    # via kubernetes
+    # via
+    #   google-api-core
+    #   google-cloud-vision
+    #   kubernetes
+google-cloud-vision==3.7.3
+    # via unstructured
 googleapis-common-protos==1.63.2
-    # via opentelemetry-exporter-otlp-proto-grpc
+    # via
+    #   google-api-core
+    #   grpcio-status
+    #   opentelemetry-exporter-otlp-proto-grpc
 greenlet==3.0.3
     # via sqlalchemy
 grpcio==1.65.1
     # via
     #   chromadb
+    #   google-api-core
+    #   grpcio-status
     #   opentelemetry-exporter-otlp-proto-grpc
+grpcio-status==1.62.2
+    # via google-api-core
 h11==0.14.0
     # via
     #   httpcore
@@ -167,12 +221,15 @@ httpx==0.27.0
     #   jupyterlab
     #   openai
     #   parea-ai
-huggingface-hub==0.24.0
+    #   unstructured-client
+huggingface-hub==0.24.2
     # via
     #   langchain-huggingface
     #   sentence-transformers
+    #   timm
     #   tokenizers
     #   transformers
+    #   unstructured-inference
 humanfriendly==10.0
     # via coloredlogs
 idna==3.7
@@ -182,15 +239,18 @@ idna==3.7
     #   httpx
     #   jsonschema
     #   requests
+    #   unstructured-client
     #   yarl
 immutables==0.20
     # via contextvars
-importlib-metadata==7.1.0
+importlib-metadata==8.0.0
     # via opentelemetry-api
 importlib-resources==6.4.0
     # via chromadb
 installer==0.7.0
     # via poetry
+iopath==0.1.10
+    # via layoutparser
 ipykernel==6.29.5
     # via
     #   jupyter
@@ -219,11 +279,17 @@ jinja2==3.1.4
     #   nbconvert
     #   torch
 joblib==1.4.2
-    # via scikit-learn
+    # via
+    #   nltk
+    #   scikit-learn
+jq==1.7.0
+    # via -r requirements/requirements.in
 json5==0.9.25
     # via jupyterlab-server
 jsonpatch==1.33
     # via langchain-core
+jsonpath-python==1.0.6
+    # via unstructured-client
 jsonpointer==3.0.0
     # via
     #   jsonpatch
@@ -270,7 +336,7 @@ jupyter-server==2.14.2
     #   notebook-shim
 jupyter-server-terminals==0.5.3
     # via jupyter-server
-jupyterlab==4.2.3
+jupyterlab==4.2.4
     # via notebook
 jupyterlab-pygments==0.3.0
     # via nbconvert
@@ -282,17 +348,19 @@ jupyterlab-widgets==3.0.11
     # via ipywidgets
 keyring==24.3.1
     # via poetry
+kiwisolver==1.4.5
+    # via matplotlib
 kubernetes==30.1.0
     # via chromadb
-langchain==0.2.9
+langchain==0.2.11
     # via
     #   -r requirements/requirements.in
     #   langchain-community
 langchain-chroma==0.1.2
     # via -r requirements/requirements.in
-langchain-community==0.2.7
+langchain-community==0.2.10
     # via langchain-experimental
-langchain-core==0.2.21
+langchain-core==0.2.24
     # via
     #   langchain
     #   langchain-chroma
@@ -300,21 +368,32 @@ langchain-core==0.2.21
     #   langchain-experimental
     #   langchain-huggingface
     #   langchain-text-splitters
-langchain-experimental==0.0.62
+langchain-experimental==0.0.63
     # via -r requirements/requirements.in
 langchain-huggingface==0.0.3
     # via -r requirements/requirements.in
 langchain-text-splitters==0.2.2
     # via langchain
-langsmith==0.1.90
+langdetect==1.0.9
+    # via unstructured
+langsmith==0.1.93
     # via
     #   langchain
     #   langchain-community
     #   langchain-core
+layoutparser==0.3.4
+    # via unstructured-inference
 levenshtein==0.25.1
     # via parea-ai
 lxml==5.2.2
-    # via -r requirements/requirements.in
+    # via
+    #   -r requirements/requirements.in
+    #   pikepdf
+    #   python-docx
+    #   python-pptx
+    #   unstructured
+markdown==3.6
+    # via unstructured
 markdown-it-py==3.0.0
     # via rich
 markupsafe==2.1.5
@@ -322,7 +401,13 @@ markupsafe==2.1.5
     #   jinja2
     #   nbconvert
 marshmallow==3.21.3
-    # via dataclasses-json
+    # via
+    #   dataclasses-json
+    #   unstructured-client
+matplotlib==3.9.1
+    # via
+    #   pycocotools
+    #   unstructured-inference
 matplotlib-inline==0.1.7
     # via
     #   ipykernel
@@ -346,7 +431,9 @@ multidict==6.0.5
     #   aiohttp
     #   yarl
 mypy-extensions==1.0.0
-    # via typing-inspect
+    # via
+    #   typing-inspect
+    #   unstructured-client
 nbclient==0.10.0
     # via nbconvert
 nbconvert==7.16.4
@@ -359,9 +446,15 @@ nbformat==5.10.4
     #   nbclient
     #   nbconvert
 nest-asyncio==1.6.0
-    # via ipykernel
+    # via
+    #   ipykernel
+    #   unstructured-client
 networkx==3.3
-    # via torch
+    # via
+    #   torch
+    #   unstructured
+nltk==3.8.1
+    # via unstructured
 notebook==7.2.1
     # via jupyter
 notebook-shim==0.2.4
@@ -372,23 +465,48 @@ numpy==1.26.4
     # via
     #   chroma-hnswlib
     #   chromadb
+    #   contourpy
     #   langchain
     #   langchain-chroma
     #   langchain-community
+    #   layoutparser
+    #   matplotlib
+    #   onnx
     #   onnxruntime
+    #   opencv-python
+    #   pandas
+    #   pycocotools
     #   scikit-learn
     #   scipy
     #   sentence-transformers
+    #   torchvision
     #   transformers
+    #   unstructured
 oauthlib==3.2.2
     # via
     #   kubernetes
     #   requests-oauthlib
+olefile==0.47
+    # via python-oxmsg
+omegaconf==2.3.0
+    # via effdet
+onnx==1.16.1
+    # via
+    #   unstructured
+    #   unstructured-inference
 onnxruntime==1.18.1
-    # via chromadb
-openai==1.35.14
+    # via
+    #   chromadb
+    #   unstructured-inference
+openai==1.37.1
     # via parea-ai
-opentelemetry-api==1.25.0
+opencv-python==4.10.0.84
+    # via
+    #   layoutparser
+    #   unstructured-inference
+openpyxl==3.1.5
+    # via unstructured
+opentelemetry-api==1.26.0
     # via
     #   chromadb
     #   opentelemetry-exporter-otlp-proto-grpc
@@ -397,35 +515,37 @@ opentelemetry-api==1.25.0
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-sdk
     #   opentelemetry-semantic-conventions
-opentelemetry-exporter-otlp-proto-common==1.25.0
+opentelemetry-exporter-otlp-proto-common==1.26.0
     # via opentelemetry-exporter-otlp-proto-grpc
-opentelemetry-exporter-otlp-proto-grpc==1.25.0
+opentelemetry-exporter-otlp-proto-grpc==1.26.0
     # via chromadb
-opentelemetry-instrumentation==0.46b0
+opentelemetry-instrumentation==0.47b0
     # via
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-fastapi
-opentelemetry-instrumentation-asgi==0.46b0
+opentelemetry-instrumentation-asgi==0.47b0
     # via opentelemetry-instrumentation-fastapi
-opentelemetry-instrumentation-fastapi==0.46b0
+opentelemetry-instrumentation-fastapi==0.47b0
     # via chromadb
-opentelemetry-proto==1.25.0
+opentelemetry-proto==1.26.0
     # via
     #   opentelemetry-exporter-otlp-proto-common
     #   opentelemetry-exporter-otlp-proto-grpc
-opentelemetry-sdk==1.25.0
+opentelemetry-sdk==1.26.0
     # via
     #   chromadb
     #   opentelemetry-exporter-otlp-proto-grpc
-opentelemetry-semantic-conventions==0.46b0
+opentelemetry-semantic-conventions==0.47b0
     # via
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-sdk
-opentelemetry-util-http==0.46b0
+opentelemetry-util-http==0.47b0
     # via
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-fastapi
+ordered-set==4.1.0
+    # via deepdiff
 orjson==3.10.6
     # via
     #   chromadb
@@ -444,24 +564,58 @@ packaging==24.1
     #   jupyterlab-server
     #   langchain-core
     #   marshmallow
+    #   matplotlib
     #   nbconvert
     #   onnxruntime
+    #   pikepdf
     #   poetry
+    #   pytesseract
     #   qtconsole
     #   qtpy
     #   transformers
+    #   unstructured-client
+    #   unstructured-pytesseract
+pandas==2.2.2
+    # via
+    #   layoutparser
+    #   unstructured
 pandocfilters==1.5.1
     # via nbconvert
-parea-ai==0.2.186
+parea-ai==0.2.190
     # via -r requirements/requirements.in
 parso==0.8.4
     # via jedi
+pdf2image==1.17.0
+    # via
+    #   layoutparser
+    #   unstructured
+pdfminer-six==20240706
+    # via
+    #   pdfplumber
+    #   unstructured
+pdfplumber==0.5.3
+    # via layoutparser
 pexpect==4.9.0
     # via
     #   ipython
     #   poetry
+pikepdf==9.1.0
+    # via unstructured
 pillow==10.4.0
-    # via sentence-transformers
+    # via
+    #   layoutparser
+    #   matplotlib
+    #   pdf2image
+    #   pdfplumber
+    #   pikepdf
+    #   pillow-heif
+    #   pytesseract
+    #   python-pptx
+    #   sentence-transformers
+    #   torchvision
+    #   unstructured-pytesseract
+pillow-heif==0.18.0
+    # via unstructured
 pkginfo==1.11.1
     # via poetry
 platformdirs==4.2.2
@@ -481,6 +635,8 @@ poetry-plugin-dotenv==0.6.33
     # via parea-ai
 poetry-plugin-export==1.8.0
     # via poetry
+portalocker==2.10.1
+    # via iopath
 posthog==3.5.0
     # via chromadb
 prometheus-client==0.20.0
@@ -489,18 +645,29 @@ prompt-toolkit==3.0.47
     # via
     #   ipython
     #   jupyter-console
-protobuf==4.25.3
+proto-plus==1.24.0
     # via
+    #   google-api-core
+    #   google-cloud-vision
+protobuf==4.25.4
+    # via
+    #   google-api-core
+    #   google-cloud-vision
     #   googleapis-common-protos
+    #   grpcio-status
+    #   onnx
     #   onnxruntime
     #   opentelemetry-proto
+    #   proto-plus
 psutil==6.0.0
-    # via ipykernel
+    # via
+    #   ipykernel
+    #   unstructured
 ptyprocess==0.7.0
     # via
     #   pexpect
     #   terminado
-pure-eval==0.2.2
+pure-eval==0.2.3
     # via stack-data
 pyasn1==0.6.0
     # via
@@ -508,8 +675,12 @@ pyasn1==0.6.0
     #   rsa
 pyasn1-modules==0.4.0
     # via google-auth
+pycocotools==2.0.8
+    # via effdet
 pycparser==2.22
     # via cffi
+pycrypto==2.6.1
+    # via pdfplumber
 pydantic==2.8.2
     # via
     #   chromadb
@@ -527,6 +698,14 @@ pygments==2.18.0
     #   nbconvert
     #   qtconsole
     #   rich
+pypandoc==1.13
+    # via unstructured
+pyparsing==3.1.2
+    # via matplotlib
+pypdf==4.3.1
+    # via
+    #   unstructured
+    #   unstructured-client
 pypika==0.48.9
     # via chromadb
 pyproject-hooks==1.1.0
@@ -535,22 +714,41 @@ pyproject-hooks==1.1.0
     #   poetry
 pysbd==0.3.4
     # via parea-ai
+pytesseract==0.3.10
+    # via unstructured
 python-dateutil==2.9.0.post0
     # via
     #   arrow
     #   jupyter-client
     #   kubernetes
+    #   matplotlib
+    #   pandas
     #   posthog
+    #   unstructured-client
+python-docx==1.1.2
+    # via unstructured
 python-dotenv==1.0.1
     # via
     #   parea-ai
     #   uvicorn
+python-iso639==2024.4.27
+    # via unstructured
 python-json-logger==2.0.7
     # via jupyter-events
+python-magic==0.4.27
+    # via unstructured
 python-multipart==0.0.9
-    # via fastapi
+    # via
+    #   fastapi
+    #   unstructured-inference
+python-oxmsg==0.0.1
+    # via unstructured
+python-pptx==0.6.23
+    # via unstructured
 pytz==2024.1
-    # via parea-ai
+    # via
+    #   pandas
+    #   parea-ai
 pyupgrade==3.16.0
     # via parea-ai
 pyyaml==6.0.1
@@ -562,6 +760,9 @@ pyyaml==6.0.1
     #   langchain
     #   langchain-community
     #   langchain-core
+    #   layoutparser
+    #   omegaconf
+    #   timm
     #   transformers
     #   uvicorn
 pyzmq==26.0.3
@@ -579,18 +780,22 @@ rapidfuzz==3.9.4
     # via
     #   cleo
     #   levenshtein
+    #   unstructured
+    #   unstructured-inference
 referencing==0.35.1
     # via
     #   jsonschema
     #   jsonschema-specifications
     #   jupyter-events
-regex==2024.5.15
+regex==2024.7.24
     # via
+    #   nltk
     #   tiktoken
     #   transformers
 requests==2.32.3
     # via
     #   cachecontrol
+    #   google-api-core
     #   huggingface-hub
     #   jupyterlab-server
     #   kubernetes
@@ -603,10 +808,14 @@ requests==2.32.3
     #   requests-toolbelt
     #   tiktoken
     #   transformers
+    #   unstructured
+    #   unstructured-client
 requests-oauthlib==2.0.0
     # via kubernetes
 requests-toolbelt==1.0.0
-    # via poetry
+    # via
+    #   poetry
+    #   unstructured-client
 rfc3339-validator==0.1.4
     # via
     #   jsonschema
@@ -617,25 +826,28 @@ rfc3986-validator==0.1.1
     #   jupyter-events
 rich==13.7.1
     # via typer
-rpds-py==0.19.0
+rpds-py==0.19.1
     # via
     #   jsonschema
     #   referencing
 rsa==4.9
     # via google-auth
 safetensors==0.4.3
-    # via transformers
+    # via
+    #   timm
+    #   transformers
 scikit-learn==1.5.1
     # via sentence-transformers
 scipy==1.14.0
     # via
+    #   layoutparser
     #   scikit-learn
     #   sentence-transformers
 send2trash==1.8.3
     # via jupyter-server
 sentence-transformers==3.0.1
     # via langchain-huggingface
-setuptools==71.0.1
+setuptools==71.1.0
     # via
     #   jupyterlab
     #   opentelemetry-instrumentation
@@ -648,9 +860,11 @@ six==1.16.0
     #   asttokens
     #   bleach
     #   kubernetes
+    #   langdetect
     #   posthog
     #   python-dateutil
     #   rfc3339-validator
+    #   unstructured-client
 sniffio==1.3.1
     # via
     #   anyio
@@ -666,10 +880,12 @@ stack-data==0.6.3
     # via ipython
 starlette==0.37.2
     # via fastapi
-sympy==1.13.0
+sympy==1.13.1
     # via
     #   onnxruntime
     #   torch
+tabulate==0.9.0
+    # via unstructured
 tenacity==8.5.0
     # via
     #   chromadb
@@ -686,6 +902,10 @@ tiktoken==0.7.0
     # via
     #   -r requirements/requirements.in
     #   parea-ai
+timm==1.0.7
+    # via
+    #   effdet
+    #   unstructured-inference
 tinycss2==1.3.0
     # via nbconvert
 tokenize-rt==5.2.0
@@ -698,7 +918,16 @@ tokenizers==0.19.1
 tomlkit==0.13.0
     # via poetry
 torch==2.2.2
-    # via sentence-transformers
+    # via
+    #   effdet
+    #   sentence-transformers
+    #   timm
+    #   torchvision
+    #   unstructured-inference
+torchvision==0.17.2
+    # via
+    #   effdet
+    #   timm
 tornado==6.4.1
     # via
     #   ipykernel
@@ -711,9 +940,12 @@ tqdm==4.66.4
     # via
     #   chromadb
     #   huggingface-hub
+    #   iopath
+    #   nltk
     #   openai
     #   sentence-transformers
     #   transformers
+    #   unstructured
 traitlets==5.14.3
     # via
     #   comm
@@ -731,10 +963,11 @@ traitlets==5.14.3
     #   nbconvert
     #   nbformat
     #   qtconsole
-transformers==4.42.4
+transformers==4.43.3
     # via
     #   langchain-huggingface
     #   sentence-transformers
+    #   unstructured-inference
 trove-classifiers==2024.7.2
     # via poetry
 typer==0.12.3
@@ -746,18 +979,38 @@ types-python-dateutil==2.9.0.20240316
 typing-extensions==4.12.2
     # via
     #   chromadb
+    #   emoji
     #   fastapi
     #   huggingface-hub
+    #   iopath
     #   openai
     #   opentelemetry-sdk
     #   pydantic
     #   pydantic-core
+    #   python-docx
+    #   python-oxmsg
     #   sqlalchemy
     #   torch
     #   typer
     #   typing-inspect
+    #   unstructured
+    #   unstructured-client
 typing-inspect==0.9.0
-    # via dataclasses-json
+    # via
+    #   dataclasses-json
+    #   unstructured-client
+tzdata==2024.1
+    # via pandas
+unicodecsv==0.14.1
+    # via pdfplumber
+unstructured==0.15.0
+    # via -r requirements/requirements.in
+unstructured-client==0.24.1
+    # via unstructured
+unstructured-inference==0.7.36
+    # via unstructured
+unstructured-pytesseract==0.3.12
+    # via unstructured
 uri-template==1.3.0
     # via jsonschema
 urllib3==2.2.2
@@ -765,7 +1018,8 @@ urllib3==2.2.2
     #   dulwich
     #   kubernetes
     #   requests
-uvicorn==0.30.1
+    #   unstructured-client
+uvicorn==0.30.3
     # via
     #   chromadb
     #   fastapi
@@ -773,6 +1027,8 @@ uvloop==0.19.0
     # via uvicorn
 virtualenv==20.26.3
     # via poetry
+wand==0.6.13
+    # via pdfplumber
 watchfiles==0.22.0
     # via uvicorn
 wcwidth==0.2.13
@@ -796,8 +1052,13 @@ wrapt==1.16.0
     #   deprecated
     #   opentelemetry-instrumentation
     #   parea-ai
+    #   unstructured
 xattr==1.1.0
     # via poetry
+xlrd==2.0.1
+    # via unstructured
+xlsxwriter==3.2.0
+    # via python-pptx
 yarl==1.9.4
     # via aiohttp
 zipp==3.19.2

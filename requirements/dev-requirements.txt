@@ -13,6 +13,10 @@ annotated-types==0.7.0
     # via
     #   -r requirements/requirements.txt
     #   pydantic
+antlr4-python3-runtime==4.9.3
+    # via
+    #   -r requirements/requirements.txt
+    #   omegaconf
 anyio==4.4.0
     # via
     #   -r requirements/requirements.txt
@@ -41,7 +45,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-instrumentation-asgi
-astroid==3.2.3
+astroid==3.2.4
     # via pylint
 asttokens==2.4.1
     # via
@@ -66,7 +70,8 @@ backoff==2.2.1
     # via
     #   -r requirements/requirements.txt
     #   posthog
-bcrypt==4.1.3
+    #   unstructured
+bcrypt==4.2.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
@@ -74,6 +79,7 @@ beautifulsoup4==4.12.3
     # via
     #   -r requirements/requirements.txt
     #   nbconvert
+    #   unstructured
 bleach==6.1.0
     # via
     #   -r requirements/requirements.txt
@@ -102,20 +108,29 @@ certifi==2024.7.4
     #   httpx
     #   kubernetes
     #   requests
+    #   unstructured-client
 cffi==1.16.0
     # via
     #   -r requirements/requirements.txt
     #   argon2-cffi-bindings
+    #   cryptography
     #   xattr
+chardet==5.2.0
+    # via
+    #   -r requirements/requirements.txt
+    #   pdfplumber
+    #   unstructured
 charset-normalizer==3.3.2
     # via
     #   -r requirements/requirements.txt
+    #   pdfminer-six
     #   requests
-chroma-hnswlib==0.7.5
+    #   unstructured-client
+chroma-hnswlib==0.7.6
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-chromadb==0.5.4
+chromadb==0.5.5
     # via
     #   -r requirements/requirements.txt
     #   langchain-chroma
@@ -126,6 +141,8 @@ cleo==2.1.0
 click==8.1.7
     # via
     #   -r requirements/requirements.txt
+    #   nltk
+    #   python-oxmsg
     #   typer
     #   uvicorn
 coloredlogs==15.0.1
@@ -141,6 +158,10 @@ contextvars==2.4
     # via
     #   -r requirements/requirements.txt
     #   parea-ai
+contourpy==1.2.1
+    # via
+    #   -r requirements/requirements.txt
+    #   matplotlib
 coverage==7.6.0
     # via -r requirements/dev-requirements.in
 crashtest==0.4.1
@@ -148,10 +169,20 @@ crashtest==0.4.1
     #   -r requirements/requirements.txt
     #   cleo
     #   poetry
+cryptography==43.0.0
+    # via
+    #   -r requirements/requirements.txt
+    #   pdfminer-six
+cycler==0.12.1
+    # via
+    #   -r requirements/requirements.txt
+    #   matplotlib
 dataclasses-json==0.6.7
     # via
     #   -r requirements/requirements.txt
     #   langchain-community
+    #   unstructured
+    #   unstructured-client
 debugpy==1.8.2
     # via
     #   -r requirements/requirements.txt
@@ -160,6 +191,10 @@ decorator==5.1.1
     # via
     #   -r requirements/requirements.txt
     #   ipython
+deepdiff==7.0.1
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured-client
 defusedxml==0.7.1
     # via
     #   -r requirements/requirements.txt
@@ -169,6 +204,8 @@ deprecated==1.2.14
     #   -r requirements/requirements.txt
     #   opentelemetry-api
     #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-semantic-conventions
+    #   pikepdf
 dill==0.3.8
     # via pylint
 distlib==0.3.8
@@ -187,10 +224,20 @@ dulwich==0.21.7
     # via
     #   -r requirements/requirements.txt
     #   poetry
+effdet==0.4.1
+    # via -r requirements/requirements.txt
 email-validator==2.2.0
     # via
     #   -r requirements/requirements.txt
     #   fastapi
+emoji==2.12.1
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
+et-xmlfile==1.1.0
+    # via
+    #   -r requirements/requirements.txt
+    #   openpyxl
 executing==2.0.1
     # via
     #   -r requirements/requirements.txt
@@ -217,10 +264,18 @@ filelock==3.15.4
     #   torch
     #   transformers
     #   virtualenv
+filetype==1.2.0
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
 flatbuffers==24.3.25
     # via
     #   -r requirements/requirements.txt
     #   onnxruntime
+fonttools==4.53.1
+    # via
+    #   -r requirements/requirements.txt
+    #   matplotlib
 fqdn==1.5.1
     # via
     #   -r requirements/requirements.txt
@@ -235,13 +290,23 @@ fsspec==2024.6.1
     #   -r requirements/requirements.txt
     #   huggingface-hub
     #   torch
+google-api-core==2.19.1
+    # via
+    #   -r requirements/requirements.txt
+    #   google-cloud-vision
 google-auth==2.32.0
     # via
     #   -r requirements/requirements.txt
+    #   google-api-core
+    #   google-cloud-vision
     #   kubernetes
+google-cloud-vision==3.7.3
+    # via -r requirements/requirements.txt
 googleapis-common-protos==1.63.2
     # via
     #   -r requirements/requirements.txt
+    #   google-api-core
+    #   grpcio-status
     #   opentelemetry-exporter-otlp-proto-grpc
 greenlet==3.0.3
     # via
@@ -251,7 +316,13 @@ grpcio==1.65.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+    #   google-api-core
+    #   grpcio-status
     #   opentelemetry-exporter-otlp-proto-grpc
+grpcio-status==1.62.2
+    # via
+    #   -r requirements/requirements.txt
+    #   google-api-core
 h11==0.14.0
     # via
     #   -r requirements/requirements.txt
@@ -273,13 +344,16 @@ httpx==0.27.0
     #   jupyterlab
     #   openai
     #   parea-ai
-huggingface-hub==0.24.0
+    #   unstructured-client
+huggingface-hub==0.24.2
     # via
     #   -r requirements/requirements.txt
     #   langchain-huggingface
     #   sentence-transformers
+    #   timm
     #   tokenizers
     #   transformers
+    #   unstructured-inference
 humanfriendly==10.0
     # via
     #   -r requirements/requirements.txt
@@ -292,12 +366,13 @@ idna==3.7
     #   httpx
     #   jsonschema
     #   requests
+    #   unstructured-client
     #   yarl
 immutables==0.20
     # via
     #   -r requirements/requirements.txt
     #   contextvars
-importlib-metadata==7.1.0
+importlib-metadata==8.0.0
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-api
@@ -309,6 +384,10 @@ installer==0.7.0
     # via
     #   -r requirements/requirements.txt
     #   poetry
+iopath==0.1.10
+    # via
+    #   -r requirements/requirements.txt
+    #   layoutparser
 ipykernel==6.29.5
     # via
     #   -r requirements/requirements.txt
@@ -352,7 +431,10 @@ jinja2==3.1.4
 joblib==1.4.2
     # via
     #   -r requirements/requirements.txt
+    #   nltk
     #   scikit-learn
+jq==1.7.0
+    # via -r requirements/requirements.txt
 json5==0.9.25
     # via
     #   -r requirements/requirements.txt
@@ -361,6 +443,10 @@ jsonpatch==1.33
     # via
     #   -r requirements/requirements.txt
     #   langchain-core
+jsonpath-python==1.0.6
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured-client
 jsonpointer==3.0.0
     # via
     #   -r requirements/requirements.txt
@@ -424,7 +510,7 @@ jupyter-server-terminals==0.5.3
     # via
     #   -r requirements/requirements.txt
     #   jupyter-server
-jupyterlab==4.2.3
+jupyterlab==4.2.4
     # via
     #   -r requirements/requirements.txt
     #   notebook
@@ -445,21 +531,25 @@ keyring==24.3.1
     # via
     #   -r requirements/requirements.txt
     #   poetry
+kiwisolver==1.4.5
+    # via
+    #   -r requirements/requirements.txt
+    #   matplotlib
 kubernetes==30.1.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-langchain==0.2.9
+langchain==0.2.11
     # via
     #   -r requirements/requirements.txt
     #   langchain-community
 langchain-chroma==0.1.2
     # via -r requirements/requirements.txt
-langchain-community==0.2.7
+langchain-community==0.2.10
     # via
     #   -r requirements/requirements.txt
     #   langchain-experimental
-langchain-core==0.2.21
+langchain-core==0.2.24
     # via
     #   -r requirements/requirements.txt
     #   langchain
@@ -468,7 +558,7 @@ langchain-core==0.2.21
     #   langchain-experimental
     #   langchain-huggingface
     #   langchain-text-splitters
-langchain-experimental==0.0.62
+langchain-experimental==0.0.63
     # via -r requirements/requirements.txt
 langchain-huggingface==0.0.3
     # via -r requirements/requirements.txt
@@ -476,17 +566,32 @@ langchain-text-splitters==0.2.2
     # via
     #   -r requirements/requirements.txt
     #   langchain
-langsmith==0.1.90
+langdetect==1.0.9
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
+langsmith==0.1.93
     # via
     #   -r requirements/requirements.txt
     #   langchain
     #   langchain-community
     #   langchain-core
+layoutparser==0.3.4
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured-inference
 levenshtein==0.25.1
     # via
     #   -r requirements/requirements.txt
     #   parea-ai
 lxml==5.2.2
+    # via
+    #   -r requirements/requirements.txt
+    #   pikepdf
+    #   python-docx
+    #   python-pptx
+    #   unstructured
+markdown==3.6
     # via -r requirements/requirements.txt
 markdown-it-py==3.0.0
     # via
@@ -501,6 +606,12 @@ marshmallow==3.21.3
     # via
     #   -r requirements/requirements.txt
     #   dataclasses-json
+    #   unstructured-client
+matplotlib==3.9.1
+    # via
+    #   -r requirements/requirements.txt
+    #   pycocotools
+    #   unstructured-inference
 matplotlib-inline==0.1.7
     # via
     #   -r requirements/requirements.txt
@@ -545,6 +656,7 @@ mypy-extensions==1.0.0
     # via
     #   -r requirements/requirements.txt
     #   typing-inspect
+    #   unstructured-client
 nbclient==0.10.0
     # via
     #   -r requirements/requirements.txt
@@ -564,10 +676,15 @@ nest-asyncio==1.6.0
     # via
     #   -r requirements/requirements.txt
     #   ipykernel
+    #   unstructured-client
 networkx==3.3
     # via
     #   -r requirements/requirements.txt
     #   torch
+nltk==3.8.1
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
 notebook==7.2.1
     # via
     #   -r requirements/requirements.txt
@@ -582,28 +699,57 @@ numpy==1.26.4
     #   -r requirements/requirements.txt
     #   chroma-hnswlib
     #   chromadb
+    #   contourpy
     #   langchain
     #   langchain-chroma
     #   langchain-community
+    #   layoutparser
+    #   matplotlib
+    #   onnx
     #   onnxruntime
+    #   opencv-python
+    #   pandas
+    #   pycocotools
     #   scikit-learn
     #   scipy
     #   sentence-transformers
+    #   torchvision
     #   transformers
+    #   unstructured
 oauthlib==3.2.2
     # via
     #   -r requirements/requirements.txt
     #   kubernetes
     #   requests-oauthlib
+olefile==0.47
+    # via
+    #   -r requirements/requirements.txt
+    #   python-oxmsg
+omegaconf==2.3.0
+    # via
+    #   -r requirements/requirements.txt
+    #   effdet
+onnx==1.16.1
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured-inference
 onnxruntime==1.18.1
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-openai==1.35.14
+    #   unstructured-inference
+openai==1.37.1
     # via
     #   -r requirements/requirements.txt
     #   parea-ai
-opentelemetry-api==1.25.0
+opencv-python==4.10.0.84
+    # via
+    #   -r requirements/requirements.txt
+    #   layoutparser
+    #   unstructured-inference
+openpyxl==3.1.5
+    # via -r requirements/requirements.txt
+opentelemetry-api==1.26.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
@@ -613,48 +759,52 @@ opentelemetry-api==1.25.0
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-sdk
     #   opentelemetry-semantic-conventions
-opentelemetry-exporter-otlp-proto-common==1.25.0
+opentelemetry-exporter-otlp-proto-common==1.26.0
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-exporter-otlp-proto-grpc
-opentelemetry-exporter-otlp-proto-grpc==1.25.0
+opentelemetry-exporter-otlp-proto-grpc==1.26.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-opentelemetry-instrumentation==0.46b0
+opentelemetry-instrumentation==0.47b0
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-fastapi
-opentelemetry-instrumentation-asgi==0.46b0
+opentelemetry-instrumentation-asgi==0.47b0
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-instrumentation-fastapi
-opentelemetry-instrumentation-fastapi==0.46b0
+opentelemetry-instrumentation-fastapi==0.47b0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
-opentelemetry-proto==1.25.0
+opentelemetry-proto==1.26.0
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-exporter-otlp-proto-common
     #   opentelemetry-exporter-otlp-proto-grpc
-opentelemetry-sdk==1.25.0
+opentelemetry-sdk==1.26.0
     # via
     #   -r requirements/requirements.txt
     #   chromadb
     #   opentelemetry-exporter-otlp-proto-grpc
-opentelemetry-semantic-conventions==0.46b0
+opentelemetry-semantic-conventions==0.47b0
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-sdk
-opentelemetry-util-http==0.46b0
+opentelemetry-util-http==0.47b0
     # via
     #   -r requirements/requirements.txt
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-fastapi
+ordered-set==4.1.0
+    # via
+    #   -r requirements/requirements.txt
+    #   deepdiff
 orjson==3.10.6
     # via
     #   -r requirements/requirements.txt
@@ -676,31 +826,66 @@ packaging==24.1
     #   jupyterlab-server
     #   langchain-core
     #   marshmallow
+    #   matplotlib
     #   nbconvert
     #   onnxruntime
+    #   pikepdf
     #   poetry
+    #   pytesseract
     #   qtconsole
     #   qtpy
     #   transformers
+    #   unstructured-client
+    #   unstructured-pytesseract
+pandas==2.2.2
+    # via
+    #   -r requirements/requirements.txt
+    #   layoutparser
 pandocfilters==1.5.1
     # via
     #   -r requirements/requirements.txt
     #   nbconvert
-parea-ai==0.2.186
+parea-ai==0.2.190
     # via -r requirements/requirements.txt
 parso==0.8.4
     # via
     #   -r requirements/requirements.txt
     #   jedi
+pdf2image==1.17.0
+    # via
+    #   -r requirements/requirements.txt
+    #   layoutparser
+pdfminer-six==20240706
+    # via
+    #   -r requirements/requirements.txt
+    #   pdfplumber
+pdfplumber==0.5.3
+    # via
+    #   -r requirements/requirements.txt
+    #   layoutparser
 pexpect==4.9.0
     # via
     #   -r requirements/requirements.txt
     #   ipython
     #   poetry
+pikepdf==9.1.0
+    # via -r requirements/requirements.txt
 pillow==10.4.0
     # via
     #   -r requirements/requirements.txt
+    #   layoutparser
+    #   matplotlib
+    #   pdf2image
+    #   pdfplumber
+    #   pikepdf
+    #   pillow-heif
+    #   pytesseract
+    #   python-pptx
     #   sentence-transformers
+    #   torchvision
+    #   unstructured-pytesseract
+pillow-heif==0.18.0
+    # via -r requirements/requirements.txt
 pkginfo==1.11.1
     # via
     #   -r requirements/requirements.txt
@@ -730,6 +915,10 @@ poetry-plugin-export==1.8.0
     # via
     #   -r requirements/requirements.txt
     #   poetry
+portalocker==2.10.1
+    # via
+    #   -r requirements/requirements.txt
+    #   iopath
 posthog==3.5.0
     # via
     #   -r requirements/requirements.txt
@@ -743,22 +932,33 @@ prompt-toolkit==3.0.47
     #   -r requirements/requirements.txt
     #   ipython
     #   jupyter-console
-protobuf==4.25.3
+proto-plus==1.24.0
     # via
     #   -r requirements/requirements.txt
+    #   google-api-core
+    #   google-cloud-vision
+protobuf==4.25.4
+    # via
+    #   -r requirements/requirements.txt
+    #   google-api-core
+    #   google-cloud-vision
     #   googleapis-common-protos
+    #   grpcio-status
+    #   onnx
     #   onnxruntime
     #   opentelemetry-proto
+    #   proto-plus
 psutil==6.0.0
     # via
     #   -r requirements/requirements.txt
     #   ipykernel
+    #   unstructured
 ptyprocess==0.7.0
     # via
     #   -r requirements/requirements.txt
     #   pexpect
     #   terminado
-pure-eval==0.2.2
+pure-eval==0.2.3
     # via
     #   -r requirements/requirements.txt
     #   stack-data
@@ -771,10 +971,18 @@ pyasn1-modules==0.4.0
     # via
     #   -r requirements/requirements.txt
     #   google-auth
+pycocotools==2.0.8
+    # via
+    #   -r requirements/requirements.txt
+    #   effdet
 pycparser==2.22
     # via
     #   -r requirements/requirements.txt
     #   cffi
+pycrypto==2.6.1
+    # via
+    #   -r requirements/requirements.txt
+    #   pdfplumber
 pydantic==2.8.2
     # via
     #   -r requirements/requirements.txt
@@ -798,8 +1006,18 @@ pygments==2.18.0
     #   nbconvert
     #   qtconsole
     #   rich
-pylint==3.2.5
+pylint==3.2.6
     # via -r requirements/dev-requirements.in
+pypandoc==1.13
+    # via -r requirements/requirements.txt
+pyparsing==3.1.2
+    # via
+    #   -r requirements/requirements.txt
+    #   matplotlib
+pypdf==4.3.1
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured-client
 pypika==0.48.9
     # via
     #   -r requirements/requirements.txt
@@ -813,29 +1031,50 @@ pysbd==0.3.4
     # via
     #   -r requirements/requirements.txt
     #   parea-ai
+pytesseract==0.3.10
+    # via -r requirements/requirements.txt
 python-dateutil==2.9.0.post0
     # via
     #   -r requirements/requirements.txt
     #   arrow
     #   jupyter-client
     #   kubernetes
+    #   matplotlib
+    #   pandas
     #   posthog
+    #   unstructured-client
+python-docx==1.1.2
+    # via -r requirements/requirements.txt
 python-dotenv==1.0.1
     # via
     #   -r requirements/requirements.txt
     #   parea-ai
     #   uvicorn
+python-iso639==2024.4.27
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
 python-json-logger==2.0.7
     # via
     #   -r requirements/requirements.txt
     #   jupyter-events
+python-magic==0.4.27
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
 python-multipart==0.0.9
     # via
     #   -r requirements/requirements.txt
     #   fastapi
+    #   unstructured-inference
+python-oxmsg==0.0.1
+    # via -r requirements/requirements.txt
+python-pptx==0.6.23
+    # via -r requirements/requirements.txt
 pytz==2024.1
     # via
     #   -r requirements/requirements.txt
+    #   pandas
     #   parea-ai
 pyupgrade==3.16.0
     # via
@@ -851,6 +1090,9 @@ pyyaml==6.0.1
     #   langchain
     #   langchain-community
     #   langchain-core
+    #   layoutparser
+    #   omegaconf
+    #   timm
     #   transformers
     #   uvicorn
 pyzmq==26.0.3
@@ -874,21 +1116,25 @@ rapidfuzz==3.9.4
     #   -r requirements/requirements.txt
     #   cleo
     #   levenshtein
+    #   unstructured
+    #   unstructured-inference
 referencing==0.35.1
     # via
     #   -r requirements/requirements.txt
     #   jsonschema
     #   jsonschema-specifications
     #   jupyter-events
-regex==2024.5.15
+regex==2024.7.24
     # via
     #   -r requirements/requirements.txt
+    #   nltk
     #   tiktoken
     #   transformers
 requests==2.32.3
     # via
     #   -r requirements/requirements.txt
     #   cachecontrol
+    #   google-api-core
     #   huggingface-hub
     #   jupyterlab-server
     #   kubernetes
@@ -901,6 +1147,8 @@ requests==2.32.3
     #   requests-toolbelt
     #   tiktoken
     #   transformers
+    #   unstructured
+    #   unstructured-client
 requests-oauthlib==2.0.0
     # via
     #   -r requirements/requirements.txt
@@ -909,6 +1157,7 @@ requests-toolbelt==1.0.0
     # via
     #   -r requirements/requirements.txt
     #   poetry
+    #   unstructured-client
 rfc3339-validator==0.1.4
     # via
     #   -r requirements/requirements.txt
@@ -923,7 +1172,7 @@ rich==13.7.1
     # via
     #   -r requirements/requirements.txt
     #   typer
-rpds-py==0.19.0
+rpds-py==0.19.1
     # via
     #   -r requirements/requirements.txt
     #   jsonschema
@@ -932,11 +1181,12 @@ rsa==4.9
     # via
     #   -r requirements/requirements.txt
     #   google-auth
-ruff==0.5.2
+ruff==0.5.5
     # via -r requirements/dev-requirements.in
 safetensors==0.4.3
     # via
     #   -r requirements/requirements.txt
+    #   timm
     #   transformers
 scikit-learn==1.5.1
     # via
@@ -945,6 +1195,7 @@ scikit-learn==1.5.1
 scipy==1.14.0
     # via
     #   -r requirements/requirements.txt
+    #   layoutparser
     #   scikit-learn
     #   sentence-transformers
 send2trash==1.8.3
@@ -955,7 +1206,7 @@ sentence-transformers==3.0.1
     # via
     #   -r requirements/requirements.txt
     #   langchain-huggingface
-setuptools==71.0.1
+setuptools==71.1.0
     # via
     #   -r requirements/requirements.txt
     #   jupyterlab
@@ -971,9 +1222,11 @@ six==1.16.0
     #   asttokens
     #   bleach
     #   kubernetes
+    #   langdetect
     #   posthog
     #   python-dateutil
     #   rfc3339-validator
+    #   unstructured-client
 sniffio==1.3.1
     # via
     #   -r requirements/requirements.txt
@@ -997,11 +1250,15 @@ starlette==0.37.2
     # via
     #   -r requirements/requirements.txt
     #   fastapi
-sympy==1.13.0
+sympy==1.13.1
     # via
     #   -r requirements/requirements.txt
     #   onnxruntime
     #   torch
+tabulate==0.9.0
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
 tenacity==8.5.0
     # via
     #   -r requirements/requirements.txt
@@ -1022,6 +1279,11 @@ tiktoken==0.7.0
     # via
     #   -r requirements/requirements.txt
     #   parea-ai
+timm==1.0.7
+    # via
+    #   -r requirements/requirements.txt
+    #   effdet
+    #   unstructured-inference
 tinycss2==1.3.0
     # via
     #   -r requirements/requirements.txt
@@ -1044,7 +1306,16 @@ tomlkit==0.13.0
 torch==2.2.2
     # via
     #   -r requirements/requirements.txt
+    #   effdet
     #   sentence-transformers
+    #   timm
+    #   torchvision
+    #   unstructured-inference
+torchvision==0.17.2
+    # via
+    #   -r requirements/requirements.txt
+    #   effdet
+    #   timm
 tornado==6.4.1
     # via
     #   -r requirements/requirements.txt
@@ -1059,9 +1330,12 @@ tqdm==4.66.4
     #   -r requirements/requirements.txt
     #   chromadb
     #   huggingface-hub
+    #   iopath
+    #   nltk
     #   openai
     #   sentence-transformers
     #   transformers
+    #   unstructured
 traitlets==5.14.3
     # via
     #   -r requirements/requirements.txt
@@ -1080,11 +1354,12 @@ traitlets==5.14.3
     #   nbconvert
     #   nbformat
     #   qtconsole
-transformers==4.42.4
+transformers==4.43.3
     # via
     #   -r requirements/requirements.txt
     #   langchain-huggingface
     #   sentence-transformers
+    #   unstructured-inference
 trove-classifiers==2024.7.2
     # via
     #   -r requirements/requirements.txt
@@ -1102,20 +1377,45 @@ typing-extensions==4.12.2
     # via
     #   -r requirements/requirements.txt
     #   chromadb
+    #   emoji
     #   fastapi
     #   huggingface-hub
+    #   iopath
     #   openai
     #   opentelemetry-sdk
     #   pydantic
     #   pydantic-core
+    #   python-docx
+    #   python-oxmsg
     #   sqlalchemy
     #   torch
     #   typer
     #   typing-inspect
+    #   unstructured
+    #   unstructured-client
 typing-inspect==0.9.0
     # via
     #   -r requirements/requirements.txt
     #   dataclasses-json
+    #   unstructured-client
+tzdata==2024.1
+    # via
+    #   -r requirements/requirements.txt
+    #   pandas
+unicodecsv==0.14.1
+    # via
+    #   -r requirements/requirements.txt
+    #   pdfplumber
+unstructured==0.15.0
+    # via -r requirements/requirements.txt
+unstructured-client==0.24.1
+    # via
+    #   -r requirements/requirements.txt
+    #   unstructured
+unstructured-inference==0.7.36
+    # via -r requirements/requirements.txt
+unstructured-pytesseract==0.3.12
+    # via -r requirements/requirements.txt
 uri-template==1.3.0
     # via
     #   -r requirements/requirements.txt
@@ -1126,7 +1426,8 @@ urllib3==2.2.2
     #   dulwich
     #   kubernetes
     #   requests
-uvicorn==0.30.1
+    #   unstructured-client
+uvicorn==0.30.3
     # via
     #   -r requirements/requirements.txt
     #   chromadb
@@ -1139,6 +1440,10 @@ virtualenv==20.26.3
     # via
     #   -r requirements/requirements.txt
     #   poetry
+wand==0.6.13
+    # via
+    #   -r requirements/requirements.txt
+    #   pdfplumber
 watchfiles==0.22.0
     # via
     #   -r requirements/requirements.txt
@@ -1175,10 +1480,17 @@ wrapt==1.16.0
     #   deprecated
     #   opentelemetry-instrumentation
     #   parea-ai
+    #   unstructured
 xattr==1.1.0
     # via
     #   -r requirements/requirements.txt
     #   poetry
+xlrd==2.0.1
+    # via -r requirements/requirements.txt
+xlsxwriter==3.2.0
+    # via
+    #   -r requirements/requirements.txt
+    #   python-pptx
 yarl==1.9.4
     # via
     #   -r requirements/requirements.txt

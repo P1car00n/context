@@ -4,4 +4,6 @@ langchain-huggingface==0.0.*
 langchain-experimental==0.0.*
 tiktoken==0.7.*
 lxml==5.2.*
+jq==1.7.*
+unstructured[all-docs]==0.15.*
 parea-ai==0.2.*
