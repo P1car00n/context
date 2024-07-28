@@ -1,0 +1,87 @@
+---
+title: Loading strategy
+---
+
+classDiagram
+  direction RL
+
+  class main {
+    +main(*args)
+  }
+  
+  note "Strategy Pattern."
+  note for main "Starting point of the application. Serves as a client."
+  note for BaseLoading "An abstract class serving as an interface in this diagram."
+  note for RAGPipeline "The context of the strategy pattern."
+
+namespace pipeline {
+  class RAGPipeline {
+    +BaseLoading loader
+    +BaseChunker chunker
+    +BaseStorage persister
+    +BaseRetriever retriever
+    +BaseGenerator generator
+    +BaseEvaluation evaluator
+    +process_query(query)
+  }
+}
+
+  namespace Loaders {
+    class BaseLoading {
+    <<interface>>
+    +load() list~Document~
+  }
+
+  class FileSystemLoader {
+    +__init__(dir_path, **kwargs)
+    +load() list~Document~
+    -Str dir_path
+  }
+
+  class CSVLoader {
+    +__init__(file_path, **kwargs)
+    +load() list~Document~
+    -Str file_path
+  }
+
+  class JSONLoader {
+    +__init__(file_path, jq_schema **kwargs)
+    +load() list~Document~
+    -Str file_path
+    -Str jq_schema
+  }
+
+  class MarkdownLoader {
+    +__init__(file_path, **kwargs)
+    +load() list~Document~
+    -Str file_path
+  }
+
+  class HTMLLoader {
+    +__init__(file_path, **kwargs)
+    +load() list~Document~
+    -Str file_path
+  }
+
+  class PDFLoader {
+    +__init__(file_path, **kwargs)
+    +load() list~Document~
+    -Str file_path
+  }
+  }
+
+  BaseLoading <|-- FileSystemLoader
+  BaseLoading <|-- CSVLoader
+  BaseLoading <|-- JSONLoader
+  BaseLoading <|-- MarkdownLoader
+  BaseLoading <|-- HTMLLoader
+  BaseLoading <|-- PDFLoader
+  BaseLoading --o RAGPipeline
+  RAGPipeline <|.. main
+  FileSystemLoader <.. main
+  CSVLoader <.. main
+  JSONLoader <.. main
+  MarkdownLoader <.. main
+  HTMLLoader <.. main
+  PDFLoader <.. main
+ 
