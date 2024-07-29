@@ -1,0 +1,32 @@
+@startuml
+title RAG Pipeline Component Diagram
+
+actor User as user
+
+package "RAG Pipeline" as rag {
+  interface "Data Source" as data_source
+  component "Loading Component" as loading
+  component "Chunking Component" as chunking
+  component "Vectorizing/Storing Component" as vectorizing_storing
+  component "Retrieving Component" as retrieving
+  component "Generating Component" as generating
+  component "Quality Assurance Component" as quality_assurance
+}
+
+database "Data Storage"{
+  component "Vectorized Data" as vectorized_data
+}
+
+user --> rag : Uses
+
+data_source - loading
+loading -> chunking : Loads chunks
+chunking -> vectorizing_storing : Processes chunks
+vectorizing_storing -> vectorized_data: Stores chunks
+vectorized_data -> retrieving : Retrieves vectors
+retrieving -> generating : Fetches relevant chunks
+generating -> quality_assurance : Checks response quality
+
+quality_assurance --> user : Receives final output
+
+@enduml
