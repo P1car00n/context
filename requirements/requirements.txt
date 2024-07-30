@@ -36,6 +36,7 @@ attrs==23.2.0
     #   aiohttp
     #   cattrs
     #   jsonschema
+    #   lancedb
     #   referencing
 babel==2.15.0
     # via jupyterlab-server
@@ -58,7 +59,9 @@ build==1.2.1
 cachecontrol==0.14.0
     # via poetry
 cachetools==5.4.0
-    # via google-auth
+    # via
+    #   google-auth
+    #   lancedb
 cattrs==23.2.3
     # via parea-ai
 certifi==2024.7.4
@@ -120,7 +123,9 @@ dataclasses-json==0.6.7
 debugpy==1.8.2
     # via ipykernel
 decorator==5.1.1
-    # via ipython
+    # via
+    #   ipython
+    #   retry
 deepdiff==7.0.1
     # via unstructured-client
 defusedxml==0.7.1
@@ -131,6 +136,8 @@ deprecated==1.2.14
     #   opentelemetry-exporter-otlp-proto-grpc
     #   opentelemetry-semantic-conventions
     #   pikepdf
+deprecation==2.1.0
+    # via lancedb
 distlib==0.3.8
     # via virtualenv
 distro==1.9.0
@@ -222,7 +229,7 @@ httpx==0.27.0
     #   openai
     #   parea-ai
     #   unstructured-client
-huggingface-hub==0.24.2
+huggingface-hub==0.24.3
     # via
     #   langchain-huggingface
     #   sentence-transformers
@@ -352,6 +359,8 @@ kiwisolver==1.4.5
     # via matplotlib
 kubernetes==30.1.0
     # via chromadb
+lancedb==0.11.0
+    # via -r requirements/requirements.in
 langchain==0.2.11
     # via
     #   -r requirements/requirements.in
@@ -475,7 +484,9 @@ numpy==1.26.4
     #   onnxruntime
     #   opencv-python
     #   pandas
+    #   pyarrow
     #   pycocotools
+    #   pylance
     #   scikit-learn
     #   scipy
     #   sentence-transformers
@@ -554,14 +565,17 @@ overrides==7.7.0
     # via
     #   chromadb
     #   jupyter-server
+    #   lancedb
 packaging==24.1
     # via
     #   build
+    #   deprecation
     #   huggingface-hub
     #   ipykernel
     #   jupyter-server
     #   jupyterlab
     #   jupyterlab-server
+    #   lancedb
     #   langchain-core
     #   marshmallow
     #   matplotlib
@@ -669,6 +683,10 @@ ptyprocess==0.7.0
     #   terminado
 pure-eval==0.2.3
     # via stack-data
+py==1.11.0
+    # via retry
+pyarrow==17.0.0
+    # via pylance
 pyasn1==0.6.0
     # via
     #   pyasn1-modules
@@ -685,6 +703,7 @@ pydantic==2.8.2
     # via
     #   chromadb
     #   fastapi
+    #   lancedb
     #   langchain
     #   langchain-core
     #   langsmith
@@ -698,6 +717,8 @@ pygments==2.18.0
     #   nbconvert
     #   qtconsole
     #   rich
+pylance==0.15.0
+    # via lancedb
 pypandoc==1.13
     # via unstructured
 pyparsing==3.1.2
@@ -749,7 +770,7 @@ pytz==2024.1
     # via
     #   pandas
     #   parea-ai
-pyupgrade==3.16.0
+pyupgrade==3.17.0
     # via parea-ai
 pyyaml==6.0.1
     # via
@@ -776,12 +797,14 @@ qtconsole==5.5.2
     # via jupyter
 qtpy==2.4.1
     # via qtconsole
-rapidfuzz==3.9.4
+rapidfuzz==3.9.5
     # via
     #   cleo
     #   levenshtein
     #   unstructured
     #   unstructured-inference
+ratelimiter==1.2.0.post0
+    # via lancedb
 referencing==0.35.1
     # via
     #   jsonschema
@@ -799,6 +822,7 @@ requests==2.32.3
     #   huggingface-hub
     #   jupyterlab-server
     #   kubernetes
+    #   lancedb
     #   langchain
     #   langchain-community
     #   langsmith
@@ -816,6 +840,8 @@ requests-toolbelt==1.0.0
     # via
     #   poetry
     #   unstructured-client
+retry==0.9.2
+    # via lancedb
 rfc3339-validator==0.1.4
     # via
     #   jsonschema
@@ -847,7 +873,7 @@ send2trash==1.8.3
     # via jupyter-server
 sentence-transformers==3.0.1
     # via langchain-huggingface
-setuptools==71.1.0
+setuptools==72.1.0
     # via
     #   jupyterlab
     #   opentelemetry-instrumentation
@@ -902,7 +928,7 @@ tiktoken==0.7.0
     # via
     #   -r requirements/requirements.in
     #   parea-ai
-timm==1.0.7
+timm==1.0.8
     # via
     #   effdet
     #   unstructured-inference
@@ -941,6 +967,7 @@ tqdm==4.66.4
     #   chromadb
     #   huggingface-hub
     #   iopath
+    #   lancedb
     #   nltk
     #   openai
     #   sentence-transformers
@@ -1005,7 +1032,7 @@ unicodecsv==0.14.1
     # via pdfplumber
 unstructured==0.15.0
     # via -r requirements/requirements.in
-unstructured-client==0.24.1
+unstructured-client==0.25.0
     # via unstructured
 unstructured-inference==0.7.36
     # via unstructured
