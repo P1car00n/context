@@ -1,0 +1,61 @@
+---
+title: Persisting strategy
+---
+
+classDiagram
+  direction RL
+
+  class main {
+    +main(*args)
+  }
+  
+  note "Strategy Pattern."
+  note for main "Starting point of the application. Serves as a client."
+  note for BaseStorage "An abstract class serving as an interface in this diagram."
+  note for RAGPipeline "The context of the strategy pattern."
+
+namespace pipeline {
+  class RAGPipeline {
+    +BaseLoading loader
+    +BaseChunker chunker
+    +BaseStorage persister
+    +BaseRetriever retriever
+    +BaseGenerator generator
+    +BaseEvaluation evaluator
+    +process_query(query)
+  }
+}
+
+  namespace Vector_Storage {
+    class BaseStorage {
+    <<interface>>
+    +__init__(docs, embeddings, **kwargs)
+    +vectorstore.similarity_search(query)
+    +Embeddings vectorstore
+  }
+
+  class ChromaStorage {
+    +__init__(docs, embeddings, **kwargs)
+    +Chroma vectorstore
+  }
+
+  class LanceStorage {
+    +__init__(docs, embeddings, **kwargs)
+    +LanceDB vectorstore
+  }
+
+  class FAISSStorage {
+    +__init__(docs, embeddings, **kwargs)
+    +FAISS vectorstore
+  }
+  }
+
+  BaseStorage <|-- ChromaStorage
+  BaseStorage <|-- LanceStorage
+  BaseStorage <|-- FAISSStorage
+  BaseStorage --o RAGPipeline
+  RAGPipeline <|.. main
+  ChromaStorage <.. main
+  LanceStorage <.. main
+  FAISSStorage <.. main
+ 
