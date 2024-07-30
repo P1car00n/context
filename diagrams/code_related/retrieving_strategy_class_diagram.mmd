@@ -1,0 +1,66 @@
+---
+title: Retrieving strategy
+---
+
+classDiagram
+  direction RL
+
+  class main {
+    +main(*args)
+  }
+  
+  note "Strategy Pattern."
+  note for main "Starting point of the application. Serves as a client."
+  note for BaseStorage "An abstract class serving as an interface in this diagram."
+  note for RAGPipeline "The context of the strategy pattern."
+
+namespace pipeline {
+  class RAGPipeline {
+    +BaseLoading loader
+    +BaseChunker chunker
+    +BaseStorage persister
+    +BaseRetriever retriever
+    +BaseGenerator generator
+    +BaseEvaluation evaluator
+    +process_query(query)
+  }
+}
+
+  namespace Retrieving {
+    class BaseRetriever {
+    <<interface>>
+    +__init__(storage)
+    +get_retriever() lang_chain.BaseRetriever
+    -VectorStore storage
+  }
+
+  class StandardRetriever {
+    +__init__(storage)
+    +get_retriever() lang_chain.VectorStoreRetriever
+    -VectorStore storage
+  }
+
+  class MultiQueryRetriever {
+    +__init__(storage)
+    +get_retriever() lang_chain.MultiQueryRetriever
+    -VectorStore storage
+    -BaseLanguageModel llm
+  }
+
+  class ComressedContextRetriever {
+    +__init__(storage)
+    +get_retriever() lang_chain.ContextualCompressionRetriever
+    -VectorStore storage
+    -BaseLanguageModel llm
+  }
+  }
+
+  BaseRetriever <|-- StandardRetriever
+  BaseRetriever <|-- MultiQueryRetriever
+  BaseRetriever <|-- ComressedContextRetriever
+  BaseRetriever --o RAGPipeline
+  RAGPipeline <|.. main
+  StandardRetriever <.. main
+  MultiQueryRetriever <.. main
+  ComressedContextRetriever <.. main
+ 
