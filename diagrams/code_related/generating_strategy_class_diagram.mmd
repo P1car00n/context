@@ -1,0 +1,72 @@
+---
+title: Generating strategy
+---
+
+classDiagram
+  direction RL
+
+  class main {
+    +main(*args)
+  }
+  
+  note "Strategy Pattern."
+  note for main "Starting point of the application. Serves as a client."
+  note for BaseStorage "An abstract class serving as an interface in this diagram."
+  note for RAGPipeline "The context of the strategy pattern."
+
+namespace pipeline {
+  class RAGPipeline {
+    +BaseLoading loader
+    +BaseChunker chunker
+    +BaseStorage persister
+    +BaseRetriever retriever
+    +BaseGenerator generator
+    +BaseEvaluation evaluator
+    +process_query(query)
+  }
+}
+
+  namespace Generating {
+    class BaseGenerator {
+    <<interface>>
+    +__init__(retriever, llm)
+    +generate() str
+    -CompositeObject runnable_sequence
+  }
+
+  class OpenAIGenerator {
+    +__init__(retriever, model_name, llm)
+    +generate() str
+    -CompositeObject runnable_sequence
+  }
+
+  class AnthropicGenerator {
+    +__init__(retriever, model_name, llm)
+    +generate() str
+    -CompositeObject runnable_sequence
+  }
+
+  class LLAMAFileGenerator {
+    +__init__(retriever, llm)
+    +generate() str
+    -CompositeObject runnable_sequence
+  }
+
+  class GPT4AllGenerator {
+    +__init__(retriever, llm)
+    +generate() str
+    -CompositeObject runnable_sequence
+  }
+  }
+
+  BaseGenerator <|-- OpenAIGenerator
+  BaseGenerator <|-- AnthropicGenerator
+  BaseGenerator <|-- LLAMAFileGenerator
+  BaseGenerator <|-- GPT4AllGenerator
+  BaseGenerator --o RAGPipeline
+  RAGPipeline <|.. main
+  OpenAIGenerator <.. main
+  AnthropicGenerator <.. main
+  LLAMAFileGenerator <.. main
+  GPT4AllGenerator <.. main
+ 
