@@ -1,0 +1,82 @@
+---
+title: Generating strategy
+---
+
+classDiagram
+  direction RL
+
+  class main {
+    +main(*args)
+  }
+  
+  note "Strategy Pattern."
+  note for main "Starting point of the application. Serves as a client."
+  note for BaseEvaluation "An abstract class serving as an interface in this diagram."
+  note for RAGPipeline "The context of the strategy pattern."
+
+namespace pipeline {
+  class RAGPipeline {
+    +BaseLoading loader
+    +BaseChunker chunker
+    +BaseStorage persister
+    +BaseRetriever retriever
+    +BaseGenerator generator
+    +BaseEvaluation evaluator
+    +process_query(query)
+  }
+}
+
+  namespace Generating {
+    class BaseEvaluation {
+    <<interface>>
+    +__init__(kargs)
+    +evaluate() float
+    -Log log
+  }
+
+  class RAGAsEval {
+    +__init__(kargs)
+    +evaluate() float
+    -Log log
+    -Callable llm_factory
+  }
+
+  class LLMGraderEval {
+    +__init__(kargs)
+    +evaluate() float
+    -Log log
+    -Callable llm_factory
+  }
+
+  class SelfCheckEval {
+    +__init__(kargs)
+    +evaluate() float
+    -Log log
+  }
+
+  class LLMJudgeEval {
+    +__init__(kargs)
+    +evaluate() float
+    -Log log
+    -Callable llm_factory
+  }
+  class ListwiseRerankingEval {
+    +__init__(kargs)
+    +evaluate() float
+    -Log log
+    -Callable llm_factory
+  }
+  }
+
+  BaseEvaluation <|-- RAGAsEval
+  BaseEvaluation <|-- LLMGraderEval
+  BaseEvaluation <|-- SelfCheckEval
+  BaseEvaluation <|-- LLMJudgeEval
+  BaseEvaluation <|-- ListwiseRerankingEval
+  BaseEvaluation --o RAGPipeline
+  RAGAsEval <|.. main
+  LLMGraderEval <.. main
+  SelfCheckEval <.. main
+  LLMJudgeEval <.. main
+  ListwiseRerankingEval <.. main
+ 
