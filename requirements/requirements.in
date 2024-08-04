@@ -5,6 +5,7 @@ langchain-huggingface==0.0.*
 langchain-experimental==0.0.*
 langchain-openai==0.1.*
 langchain-anthropic==0.1.*
+langchainhub==0.1.*
 tiktoken==0.7.*
 lxml==5.2.*
 jq==1.7.*

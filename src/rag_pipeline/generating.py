@@ -4,11 +4,11 @@ All adhere to the strategy pattern as currently implemented.
 """
 
 import abc
-import textwrap
 import typing
 
 import langchain_anthropic
 import langchain_openai
+from langchain import hub
 from langchain_community.llms import gpt4all, llamafile
 from langchain_core import (
     documents,
@@ -18,14 +18,7 @@ from langchain_core import (
     runnables,
 )
 
-PROMPT = textwrap.dedent("""\
-    You are an assistant for question-answering tasks. Use the following pieces
-    of retrieved context to answer the question. If you don't know the answer,
-    just say that you don't know. Use three sentences maximum and keep
-    the answer concise.
-    Question: {question}
-    Context: {context}
-    Answer:""")
+PROMPT = hub.pull("rlm/rag-prompt")
 
 
 def format_docs(docs: typing.Iterable[documents.Document]) -> str:
