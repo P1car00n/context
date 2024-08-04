@@ -4,6 +4,7 @@ import typing
 
 from langchain_community import vectorstores
 from langchain_core import documents
+from langchain_core import vectorstores as core_vectorstores
 
 from . import (
     chunking,
@@ -83,7 +84,7 @@ class RAGPipeline:
             raise UnsetComponentError("Persister")
         return self.persister.store(chunked_data)
 
-    def retrieve_context(self) -> vectorstores.VectorStoreRetriever:
+    def get_retriever(self) -> core_vectorstores.VectorStoreRetriever:
         """Retrieve the data."""
         if self.retriever is None:
             raise UnsetComponentError("Retriever")
