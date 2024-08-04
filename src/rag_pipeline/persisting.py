@@ -14,6 +14,38 @@ from langchain_core import documents, embeddings
 class BaseStorage(abc.ABC):
     """Abstract base class defining common storage operations."""
 
+    @abc.abstractmethod
+    @typing.override
+    def __init__(
+        self,
+        embedding: embeddings.Embeddings,
+    ) -> None:
+        """Instantiate this vectorstore.
+
+        Args:
+            docs: Textual data from which to create embeddings for vector
+                storage.
+            embedding: Model to use to generate embeddings.
+            kwargs: key-word arguments to pass to the underlying storage
+                provider.
+        """
+        self._embedding = embedding
+        self.vectorstore = None
+
+    @abc.abstractmethod
+    def store(
+        self, docs: list[documents.Document], **kwargs: typing.Any
+    ) -> vectorstores.VectorStore:
+        """Store the docs in a vectorstore.
+
+        Args:
+            docs: Data to be sotred.
+            kwargs: Key-word arguments to pass to the wrapped vectorstore.
+
+        Returns:
+            This vectorstore's instance.
+        """
+
 
 class ChromaStorage(BaseStorage):
     """Vector storage provided by the Chroma DB.
@@ -24,27 +56,17 @@ class ChromaStorage(BaseStorage):
     """
 
     @typing.override
-    def __init__(
+    def store(
         self,
         docs: list[documents.Document],
-        embedding: embeddings.Embeddings,
         **kwargs: typing.Any,
-    ) -> None:
-        """Instantiate ChromaStorage.
-
-        Args:
-            docs: Textual data from which to create embeddings for vector
-                storage.
-            embedding: Model to use to generate embeddings.
-            kwargs: key-word arguments to pass to the underlying storage
-                provider.
-        """
-        self._embedding = embedding
+    ) -> langchain_chroma.Chroma:
         self.vectorstore = langchain_chroma.Chroma.from_documents(
             docs,
             self._embedding,
             **kwargs,
         )
+        return self.vectorstore
 
 
 class LanceStorage(BaseStorage):
@@ -56,27 +78,17 @@ class LanceStorage(BaseStorage):
     """
 
     @typing.override
-    def __init__(
+    def store(
         self,
         docs: list[documents.Document],
-        embedding: embeddings.Embeddings,
         **kwargs: typing.Any,
-    ) -> None:
-        """Instantiate LanceStorage.
-
-        Args:
-            docs: Textual data from which to create embeddings for vector
-                storage.
-            embedding: Model to use to generate embeddings.
-            kwargs: key-word arguments to pass to the underlying storage
-                provider.
-        """
-        self._embedding = embedding
+    ) -> vectorstores.LanceDB:
         self.vectorstore = vectorstores.LanceDB.from_documents(
             docs,
             self._embedding,
             **kwargs,
         )
+        return self.vectorstore
 
 
 class FAISSStorage(BaseStorage):
@@ -88,24 +100,14 @@ class FAISSStorage(BaseStorage):
     """
 
     @typing.override
-    def __init__(
+    def store(
         self,
         docs: list[documents.Document],
-        embedding: embeddings.Embeddings,
         **kwargs: typing.Any,
-    ) -> None:
-        """Instantiate FAISSStorage.
-
-        Args:
-            docs: Textual data from which to create embeddings for vector
-                storage.
-            embedding: Model to use to generate embeddings.
-            kwargs: key-word arguments to pass to the underlying storage
-                provider.
-        """
-        self._embedding = embedding
+    ) -> vectorstores.FAISS:
         self.vectorstore = vectorstores.FAISS.from_documents(
             docs,
             self._embedding,
             **kwargs,
         )
+        return self.vectorstore
