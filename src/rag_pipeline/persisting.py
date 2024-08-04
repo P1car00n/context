@@ -56,6 +56,13 @@ class ChromaStorage(BaseStorage):
     """
 
     @typing.override
+    def __init__(
+        self,
+        embedding: embeddings.Embeddings,
+    ) -> None:
+        super().__init__(embedding)
+
+    @typing.override
     def store(
         self,
         docs: list[documents.Document],
@@ -78,6 +85,13 @@ class LanceStorage(BaseStorage):
     """
 
     @typing.override
+    def __init__(
+        self,
+        embedding: embeddings.Embeddings,
+    ) -> None:
+        super().__init__(embedding)
+
+    @typing.override
     def store(
         self,
         docs: list[documents.Document],
@@ -98,6 +112,13 @@ class FAISSStorage(BaseStorage):
         vectorstore: The wrapped storage object.
             All of its methods are available to the end user to use.
     """
+
+    @typing.override
+    def __init__(
+        self,
+        embedding: embeddings.Embeddings,
+    ) -> None:
+        super().__init__(embedding)
 
     @typing.override
     def store(
