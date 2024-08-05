@@ -98,6 +98,7 @@ cleo==2.1.0
     # via poetry
 click==8.1.7
     # via
+    #   -r requirements/requirements.in
     #   nltk
     #   python-oxmsg
     #   typer
@@ -873,7 +874,7 @@ rpds-py==0.19.1
     #   referencing
 rsa==4.9
     # via google-auth
-safetensors==0.4.3
+safetensors==0.4.4
     # via
     #   timm
     #   transformers
@@ -1008,7 +1009,7 @@ traitlets==5.14.3
     #   nbconvert
     #   nbformat
     #   qtconsole
-transformers==4.43.3
+transformers==4.43.4
     # via
     #   langchain-huggingface
     #   sentence-transformers
