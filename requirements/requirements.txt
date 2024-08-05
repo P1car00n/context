@@ -2,7 +2,7 @@
 #    uv pip compile --strip-extras requirements/requirements.in -o requirements/requirements.txt
 aiohappyeyeballs==2.3.4
     # via aiohttp
-aiohttp==3.10.0
+aiohttp==3.10.1
     # via
     #   langchain
     #   langchain-community
@@ -424,7 +424,7 @@ marshmallow==3.21.3
     # via
     #   dataclasses-json
     #   unstructured-client
-matplotlib==3.9.1
+matplotlib==3.9.0
     # via
     #   pycocotools
     #   unstructured-inference
@@ -765,6 +765,7 @@ python-docx==1.1.2
     # via unstructured
 python-dotenv==1.0.1
     # via
+    #   -r requirements/requirements.in
     #   parea-ai
     #   uvicorn
 python-iso639==2024.4.27
@@ -950,7 +951,7 @@ timm==1.0.8
     #   unstructured-inference
 tinycss2==1.3.0
     # via nbconvert
-tokenize-rt==5.2.0
+tokenize-rt==6.0.0
     # via pyupgrade
 tokenizers==0.19.1
     # via

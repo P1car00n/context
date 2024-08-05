@@ -4,7 +4,7 @@ aiohappyeyeballs==2.3.4
     # via
     #   -r requirements/requirements.txt
     #   aiohttp
-aiohttp==3.10.0
+aiohttp==3.10.1
     # via
     #   -r requirements/requirements.txt
     #   langchain
@@ -173,7 +173,7 @@ contourpy==1.2.1
     # via
     #   -r requirements/requirements.txt
     #   matplotlib
-coverage==7.6.0
+coverage==7.6.1
     # via -r requirements/dev-requirements.in
 crashtest==0.4.1
     # via
@@ -625,7 +625,7 @@ marshmallow==3.21.3
     #   -r requirements/requirements.txt
     #   dataclasses-json
     #   unstructured-client
-matplotlib==3.9.1
+matplotlib==3.9.0
     # via
     #   -r requirements/requirements.txt
     #   pycocotools
@@ -1338,7 +1338,7 @@ tinycss2==1.3.0
     # via
     #   -r requirements/requirements.txt
     #   nbconvert
-tokenize-rt==5.2.0
+tokenize-rt==6.0.0
     # via
     #   -r requirements/requirements.txt
     #   pyupgrade

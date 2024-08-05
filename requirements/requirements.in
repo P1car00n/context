@@ -11,3 +11,4 @@ lxml==5.2.*
 jq==1.7.*
 unstructured[all-docs]==0.15.*
 parea-ai==0.2.*
+python-dotenv==1.0.*
