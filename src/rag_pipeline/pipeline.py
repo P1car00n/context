@@ -1,5 +1,6 @@
 """The central module that orchestrates the entire RAG process."""
 
+import logging
 import typing
 
 from langchain_community import vectorstores
@@ -13,6 +14,14 @@ from . import (
     persisting,
     quality_metrics,
     retrieving,
+)
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    filename="logs/pipeline.log",
+    filemode="w+",
+    encoding="utf-8",
+    level=logging.INFO,
 )
 
 
@@ -64,7 +73,9 @@ class RAGPipeline:
         """Load the data."""
         if self.loader is None:
             raise UnsetComponentError("Loader")
-        return self.loader.load()
+        _loaded_documents = self.loader.load()
+        logger.info("Loaded documents: %s", _loaded_documents)
+        return _loaded_documents
 
     def chunk_documents(
         self,
@@ -73,7 +84,9 @@ class RAGPipeline:
         """Chunk the data."""
         if self.chunker is None:
             raise UnsetComponentError("Chunker")
-        return self.chunker.text_splitter.split_documents(data)
+        _chunked_documents = self.chunker.text_splitter.split_documents(data)
+        logger.info("Chunked documents: %s", _chunked_documents)
+        return _chunked_documents
 
     def persist_documents(
         self,
@@ -94,7 +107,9 @@ class RAGPipeline:
         """Retrieve the data."""
         if self.generator is None:
             raise UnsetComponentError("Generator")
-        return self.generator.generate(query)
+        _answer = self.generator.generate(query)
+        logger.info("Received query: %s. Generated answer: %s", query, _answer)
+        return _answer
 
     def evaluate(self) -> int:
         """Assess the pipeline's quality.
