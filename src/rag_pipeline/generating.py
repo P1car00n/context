@@ -22,7 +22,7 @@ PROMPT = hub.pull("rlm/rag-prompt")
 
 
 def format_docs(docs: typing.Iterable[documents.Document]) -> str:
-    """Combdine all document objects into one string.
+    """Combine all document objects into one string.
 
     Anything apart from the context is discarded.
 

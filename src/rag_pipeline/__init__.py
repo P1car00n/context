@@ -1,5 +1,6 @@
 """Pipeline's initializer."""
 
+import logging
 import pathlib
 
 import dotenv
@@ -18,6 +19,14 @@ from . import (
 dotenv.load_dotenv()
 
 _PDF_PATH = "/Users/af/Development/thesis/context/src/tests/resources/documents/Economic Policy Thoughts for Today and Tomorrow.pdf"
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    filename="logs/pipeline.log",
+    filemode="w+",
+    encoding="utf-8",
+    level=logging.INFO,
+)
 
 
 def _get_quality_metrics(
@@ -79,6 +88,8 @@ def main():
 
     for query in _queries:
         _context = _lc_retriever.invoke(query)
+        logger.info("Context received: %s", _context)
+
         _answer = _pipeline.generate_answer(query)
 
         _pipeline.eveluators = _get_quality_metrics(query, _answer)

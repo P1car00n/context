@@ -120,4 +120,5 @@ class RAGPipeline:
         _evaluations = [evaluator.evaluate() for evaluator in self.eveluators]
         if not _evaluations:
             return 0
+        logger.info("Evaluations: %s", _evaluations)
         return int(sum(_evaluations) / len(_evaluations) * 100)
