@@ -29,12 +29,23 @@ def _get_quality_metrics(
         quality_metrics.LLMGraderEval(query, output, model=_model),
         # quality_metrics.SelfCheckEval(),
         quality_metrics.LLMJudgeEval(query, output, examiner_model=_model),
-        quality_metrics.ListwiseRerankingEval(query, output, model=_model),
+        # quality_metrics.ListwiseRerankingEval(query, output, model=_model),
     ]
 
 
 def main():
-    _query = "What is the relationship between economic freedom and prosperity according to Mises?"
+    _queries = [
+        "What role does private property play in promoting economic efficiency and resource allocation?",
+        "Explain the merits of market institutions in contrast to the dangers of government intervention.",
+        "How does Mises clarify the quantity theory of money? What implications does this theory have for inflation and monetary policy?",
+        "According to Mises, why is socialism inherently flawed in terms of economic calculation?",
+        "Explore Mises's views on interest rates and their impact on investment decisions.",
+        "Discuss the concept of comparative advantage and its relevance to free trade.",
+        "Analyze Mises's perspective on inflation.",
+        "Compare and contrast fascism with other economic systems.",
+        "What dangers does Mises highlight regarding industrial policy and central planning? How do these policies affect economic progress?",
+        "Summarize Mises's core message about the relationship between liberty, private property, and prosperity.",
+    ]
 
     _loader = loading.PDFLoader(_PDF_PATH)
     _chunker = chunking.RecursiveChunker(
@@ -62,15 +73,16 @@ def main():
     _pipeline.retriever = _retriever
 
     _lc_retriever = _pipeline.get_retriever()
-    _context = _lc_retriever.invoke(_query)
 
     _generator = generating.LLAMAFileGenerator(_lc_retriever)
     _pipeline.generator = _generator
 
-    _answer = _pipeline.generate_answer(_query)
+    for query in _queries:
+        _context = _lc_retriever.invoke(query)
+        _answer = _pipeline.generate_answer(query)
 
-    _pipeline.eveluators = _get_quality_metrics(_query, _answer)
-    _quality = _pipeline.evaluate()
+        _pipeline.eveluators = _get_quality_metrics(query, _answer)
+        _quality = _pipeline.evaluate()
 
-    print(_answer)
-    print(_quality)
+        print(_answer)
+        print(_quality)
