@@ -15,15 +15,25 @@ class BaseEvaluation(abc.ABC):
 
     @abc.abstractmethod
     @typing.override
-    def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
+    def __init__(
+        self,
+        query: str,
+        context: list[str],
+        output: str,
+        **kwargs: typing.Any,
+    ) -> None:
         """Instantiate the class.
 
         Args:
             kwargs: Key-word arguments to pass to Parea SDK.
             query: The question asked by the user.
+            context: The context provided to the LLM.
             output: The answer provided by the LLM.
         """
-        self._log = log.Log(inputs={"question": query}, output=output)
+        self._log = log.Log(
+            inputs={"question": query, "context": context},
+            output=output,
+        )
 
     @abc.abstractmethod
     def evaluate(self) -> float:
@@ -41,7 +51,7 @@ class RAGAsEval(BaseEvaluation):
     @typing.override
     def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
         self._llm_factory = general.answer_relevancy_factory(**kwargs)
-        super().__init__(query, output)
+        super().__init__(query, context="", output=output)
 
     @typing.override
     def evaluate(self) -> float:
@@ -54,7 +64,7 @@ class LLMGraderEval(BaseEvaluation):
     @typing.override
     def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
         self._llm_factory = general.llm_grader_factory(**kwargs)
-        super().__init__(query, output)
+        super().__init__(query, context="", output=output)
 
     @typing.override
     def evaluate(self) -> float:
@@ -70,7 +80,7 @@ class SelfCheckEval(BaseEvaluation):
         query: str,
         output: str,
     ) -> None:
-        super().__init__(query, output)
+        super().__init__(query, context="", output=output)
 
     @typing.override
     def evaluate(self) -> float:
@@ -84,7 +94,7 @@ class LLMJudgeEval(BaseEvaluation):
     @typing.override
     def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
         self._llm_factory = general.lm_vs_lm_factuality_factory(**kwargs)
-        super().__init__(query, output)
+        super().__init__(query, context="", output=output)
 
     @typing.override
     def evaluate(self) -> float:
@@ -95,9 +105,18 @@ class ListwiseRerankingEval(BaseEvaluation):
     """Evaluation based on context_ranking_listwise_factory."""
 
     @typing.override
-    def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
-        self._llm_factory = rag.context_ranking_listwise_factory(**kwargs)
-        super().__init__(query, output)
+    def __init__(
+        self,
+        query: str,
+        context: list[str],
+        output: str,
+        **kwargs: typing.Any,
+    ) -> None:
+        self._llm_factory = rag.context_ranking_listwise_factory(
+            context_fields=["context"],
+            **kwargs,
+        )
+        super().__init__(query, context, output)
 
     @typing.override
     def evaluate(self) -> float:

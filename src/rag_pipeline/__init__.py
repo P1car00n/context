@@ -5,6 +5,7 @@ import pathlib
 
 import dotenv
 import langchain_huggingface
+from langchain_openai import embeddings
 
 from . import (
     chunking,
@@ -39,18 +40,43 @@ def get_text_loader() -> loading.FileSystemLoader:
     )
 
 
+def get_recursive_chunker() -> chunking.RecursiveChunker:
+    """Helper function returning an instance of RecursiveChunker."""
+    return chunking.RecursiveChunker(
+        pathlib.Path(TXT_PATH),
+        chunk_size=500,
+        chunk_overlap=100,
+        length_function=len,
+        is_separator_regex=False,
+    )
+
+
+def get_semantic_chunker() -> chunking.SemanticChunker:
+    """Helper function returning an instance of SemanticChunker."""
+    return chunking.SemanticChunker(
+        pathlib.Path(TXT_PATH),
+        embedding_model=embeddings.OpenAIEmbeddings(),
+    )
+
+
 def get_quality_metrics(
     query: str,
     output: str,
+    context: list[str],
 ) -> list[quality_metrics.BaseEvaluation]:
     """Return a list of instantiated quality metrics."""
     model = "gpt-4o-mini"
     return [
         quality_metrics.RAGAsEval(query, output, model=model),
         quality_metrics.LLMGraderEval(query, output, model=model),
-        # quality_metrics.SelfCheckEval(),
+        quality_metrics.SelfCheckEval(query, output),
         quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
-        # quality_metrics.ListwiseRerankingEval(query, output, model=model),
+        quality_metrics.ListwiseRerankingEval(
+            query,
+            context=context,
+            output=output,
+            model=model,
+        ),
     ]
 
 
@@ -70,13 +96,7 @@ def main() -> None:
     ]
 
     loader = get_text_loader()
-    chunker = chunking.RecursiveChunker(
-        pathlib.Path(TXT_PATH),
-        chunk_size=500,
-        chunk_overlap=50,
-        length_function=len,
-        is_separator_regex=False,
-    )
+    chunker = get_recursive_chunker()
 
     _pipeline = pipeline.RAGPipeline(loader, chunker)
 
@@ -105,7 +125,11 @@ def main() -> None:
 
         answer = _pipeline.generate_answer(query)
 
-        # _pipeline.eveluators = get_quality_metrics(query, answer)
+        _pipeline.eveluators = get_quality_metrics(
+            query,
+            answer,
+            context=[context[i].page_content for i in range(len(context))],
+        )
         quality = _pipeline.evaluate()
 
         print(answer)
