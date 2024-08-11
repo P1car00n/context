@@ -34,7 +34,7 @@ logging.basicConfig(
 def get_text_loader() -> loading.FileSystemLoader:
     """Helper function returning an instance of FileSystemLoader."""
     return loading.FileSystemLoader(
-        "/Users/af/Development/thesis/context/src/tests/resources/documents/",
+        "/Users/af/Development/thesis/context/src/tests/resources/data/",
         glob="*.txt",
         use_multithreading=True,
     )
@@ -69,30 +69,30 @@ def get_quality_metrics(
     return [
         quality_metrics.RAGAsEval(query, output, model=model),
         quality_metrics.LLMGraderEval(query, output, model=model),
-        quality_metrics.SelfCheckEval(query, output),
-        quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
-        quality_metrics.ListwiseRerankingEval(
-            query,
-            context=context,
-            output=output,
-            model=model,
-        ),
+        # quality_metrics.SelfCheckEval(query, output),
+        # quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
+        # quality_metrics.ListwiseRerankingEval(
+        #   query,
+        #    context=context,
+        #    output=output,
+        #    model=model,
+        # ),
     ]
 
 
 def main() -> None:
     """Launch the pipeline."""
     queries = [
-        "What role does private property play in promoting economic efficiency and resource allocation?",
-        "Explain the merits of market institutions in contrast to the dangers of government intervention.",
-        "How does Mises clarify the quantity theory of money? What implications does this theory have for inflation and monetary policy?",
-        "According to Mises, why is socialism inherently flawed in terms of economic calculation?",
-        "Explore Mises's views on interest rates and their impact on investment decisions.",
-        "Discuss the concept of comparative advantage and its relevance to free trade.",
-        "Analyze Mises's perspective on inflation.",
-        "Compare and contrast fascism with other economic systems.",
-        "What dangers does Mises highlight regarding industrial policy and central planning? How do these policies affect economic progress?",
-        "Summarize Mises's core message about the relationship between liberty, private property, and prosperity.",
+        "What is Chowder?",
+        "Define PDI",
+        "What should Site Reliability Engineer do?",
+        "Can I work from a coffe shop?",
+        "How many years of experience do I need to qualify for the title of Principal Programmer?",
+        "What does Junior Designer need to be able to do with regard to web technologies?",
+        "What is EOS?",
+        "Tell me about Queenbee.",
+        "Am I allowed to have a side gig?",
+        "Can I bring my own devices to work?",
     ]
 
     loader = get_text_loader()

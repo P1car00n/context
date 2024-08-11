@@ -51,7 +51,7 @@ class RAGAsEval(BaseEvaluation):
     @typing.override
     def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
         self._llm_factory = general.answer_relevancy_factory(**kwargs)
-        super().__init__(query, context="", output=output)
+        super().__init__(query, context=[""], output=output)
 
     @typing.override
     def evaluate(self) -> float:
@@ -64,7 +64,7 @@ class LLMGraderEval(BaseEvaluation):
     @typing.override
     def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
         self._llm_factory = general.llm_grader_factory(**kwargs)
-        super().__init__(query, context="", output=output)
+        super().__init__(query, context=[""], output=output)
 
     @typing.override
     def evaluate(self) -> float:
@@ -80,7 +80,7 @@ class SelfCheckEval(BaseEvaluation):
         query: str,
         output: str,
     ) -> None:
-        super().__init__(query, context="", output=output)
+        super().__init__(query, context=[""], output=output)
 
     @typing.override
     def evaluate(self) -> float:
@@ -94,7 +94,7 @@ class LLMJudgeEval(BaseEvaluation):
     @typing.override
     def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
         self._llm_factory = general.lm_vs_lm_factuality_factory(**kwargs)
-        super().__init__(query, context="", output=output)
+        super().__init__(query, context=[""], output=output)
 
     @typing.override
     def evaluate(self) -> float:
