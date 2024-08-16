@@ -95,7 +95,9 @@ class LLMJudgeEval(BaseEvaluation):
 
     @typing.override
     def __init__(self, query: str, output: str, **kwargs: typing.Any) -> None:
-        self._llm_factory = general.lm_vs_lm_factuality_factory(**kwargs)
+        self._llm_factory = mad_skillz.lm_vs_lm.lm_vs_lm_factuality_factory(
+            **kwargs,
+        )
         super().__init__(query, context="", output=output)
 
     @typing.override
