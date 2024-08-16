@@ -122,7 +122,7 @@ def get_quality_metrics(
     return [
         quality_metrics.RAGAsEval(query, output, model=model),
         quality_metrics.LLMGraderEval(query, output, model=model),
-        # quality_metrics.SelfCheckEval(query, output),
+        quality_metrics.SelfCheckEval(query, output),
         # quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
         # quality_metrics.ListwiseRerankingEval(
         #    query,
@@ -148,7 +148,7 @@ def main() -> None:
         "Summarize Mises's core message about the relationship between liberty, private property, and prosperity.",
     ]
 
-    loader = get_html_loader()
+    loader = get_text_loader()
     chunker = get_recursive_chunker()
 
     _pipeline = pipeline.RAGPipeline(loader, chunker)

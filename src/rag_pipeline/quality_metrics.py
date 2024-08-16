@@ -9,6 +9,8 @@ import typing
 from parea.evals import general, rag
 from parea.schemas import log
 
+from . import mad_skillz
+
 
 class BaseEvaluation(abc.ABC):
     """Abstract base class defining common evaluation operations."""
@@ -84,7 +86,7 @@ class SelfCheckEval(BaseEvaluation):
 
     @typing.override
     def evaluate(self) -> float:
-        _result = general.self_check(self._log)
+        _result = mad_skillz.self_check.self_check(self._log)
         return _result if _result is not None else 0
 
 
