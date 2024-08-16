@@ -21,6 +21,8 @@ dotenv.load_dotenv()
 
 PDF_PATH = "/Users/af/Development/thesis/context/src/tests/resources/documents/Economic Policy Thoughts for Today and Tomorrow.pdf"
 TXT_PATH = "/Users/af/Development/thesis/context/src/tests/resources/documents/Economic Policy Thoughts for Today and Tomorrow.txt"
+MD_PATH = "/Users/af/Development/thesis/context/src/tests/resources/documents/economic_policy.md"
+HTML_PATH = "/Users/af/Development/thesis/context/src/tests/resources/documents/economic_policy.html"
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -40,10 +42,34 @@ def get_text_loader() -> loading.FileSystemLoader:
     )
 
 
+def get_pdf_loader() -> loading.PDFLoader:
+    """Helper function returning an instance of PDFLoader."""
+    return loading.PDFLoader(
+        PDF_PATH,
+        use_multithreading=True,
+    )
+
+
+def get_md_loader() -> loading.MarkdownLoader:
+    """Helper function returning an instance of MarkdownLoader."""
+    return loading.MarkdownLoader(
+        MD_PATH,
+        use_multithreading=True,
+    )
+
+
+def get_html_loader() -> loading.HTMLLoader:
+    """Helper function returning an instance of HTMLLoader."""
+    return loading.HTMLLoader(
+        HTML_PATH,
+        use_multithreading=True,
+    )
+
+
 def get_recursive_chunker() -> chunking.RecursiveChunker:
     """Helper function returning an instance of RecursiveChunker."""
     return chunking.RecursiveChunker(
-        pathlib.Path(TXT_PATH),
+        pathlib.Path(MD_PATH),
         chunk_size=500,
         chunk_overlap=100,
         length_function=len,
@@ -59,6 +85,33 @@ def get_semantic_chunker() -> chunking.SemanticChunker:
     )
 
 
+def get_markdown_chunker() -> chunking.MarkdownHeaderChunker:
+    """Helper function returning an instance of MarkdownHeaderChunker."""
+    headers_to_split_on = (
+        ("#", "Header 1"),
+        ("##", "Header 2"),
+        ("###", "Header 3"),
+    )
+    return chunking.MarkdownHeaderChunker(
+        pathlib.Path(MD_PATH),
+        headers_to_split_on=headers_to_split_on,
+    )
+
+
+def get_html_chunker() -> chunking.HTMLHeaderChunker:
+    """Helper function returning an instance of HTMLHeaderChunker."""
+    headers_to_split_on = (
+        ("h1", "Header 1"),
+        ("h2", "Header 2"),
+        ("h3", "Header 3"),
+        ("h4", "Header 4"),
+    )
+    return chunking.HTMLHeaderChunker(
+        pathlib.Path(HTML_PATH),
+        headers_to_split_on=headers_to_split_on,
+    )
+
+
 def get_quality_metrics(
     query: str,
     output: str,
@@ -69,14 +122,14 @@ def get_quality_metrics(
     return [
         quality_metrics.RAGAsEval(query, output, model=model),
         quality_metrics.LLMGraderEval(query, output, model=model),
-        quality_metrics.SelfCheckEval(query, output),
-        quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
-        quality_metrics.ListwiseRerankingEval(
-            query,
-            context=context,
-            output=output,
-            model=model,
-        ),
+        # quality_metrics.SelfCheckEval(query, output),
+        # quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
+        # quality_metrics.ListwiseRerankingEval(
+        #    query,
+        #    context=context,
+        #    output=output,
+        #    model=model,
+        # ),
     ]
 
 
@@ -95,7 +148,7 @@ def main() -> None:
         "Summarize Mises's core message about the relationship between liberty, private property, and prosperity.",
     ]
 
-    loader = get_text_loader()
+    loader = get_html_loader()
     chunker = get_recursive_chunker()
 
     _pipeline = pipeline.RAGPipeline(loader, chunker)

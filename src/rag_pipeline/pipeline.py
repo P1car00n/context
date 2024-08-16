@@ -84,7 +84,12 @@ class RAGPipeline:
         """Chunk the data."""
         if self.chunker is None:
             raise UnsetComponentError("Chunker")
-        _chunked_documents = self.chunker.text_splitter.split_documents(data)
+        try:
+            _chunked_documents = self.chunker.text_splitter.split_documents(
+                data,
+            )
+        except AttributeError:
+            _chunked_documents = self.chunker.chunk()
         logger.info("Chunked documents: %s", _chunked_documents)
         return _chunked_documents
 
