@@ -124,12 +124,12 @@ def get_quality_metrics(
         quality_metrics.LLMGraderEval(query, output, model=model),
         quality_metrics.SelfCheckEval(query, output),
         quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
-        # quality_metrics.ListwiseRerankingEval(
-        #    query,
-        #    context=context,
-        #    output=output,
-        #    model=model,
-        # ),
+        quality_metrics.ListwiseRerankingEval(
+            query,
+            context=context,
+            output=output,
+            model=model,
+        ),
     ]
 
 

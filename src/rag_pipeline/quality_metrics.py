@@ -116,7 +116,7 @@ class ListwiseRerankingEval(BaseEvaluation):
         output: str,
         **kwargs: typing.Any,
     ) -> None:
-        self._llm_factory = rag.context_ranking_listwise_factory(
+        self._llm_factory = mad_skillz.context_ranking_listwise.context_ranking_listwise_factory(
             context_fields=["context"],
             **kwargs,
         )
