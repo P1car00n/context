@@ -116,13 +116,14 @@ def get_quality_metrics(
     query: str,
     output: str,
     context: list[str],
+    use_local_LLM: bool = True,
 ) -> list[quality_metrics.BaseEvaluation]:
     """Return a list of instantiated quality metrics."""
     model = "gpt-4o-mini"
     return [
         quality_metrics.RAGAsEval(query, output, model=model),
         quality_metrics.LLMGraderEval(query, output, model=model),
-        quality_metrics.SelfCheckEval(query, output),
+        quality_metrics.SelfCheckEval(query, output, use_local_LLM),
         quality_metrics.LLMJudgeEval(query, output, examiner_model=model),
         quality_metrics.ListwiseRerankingEval(
             query,

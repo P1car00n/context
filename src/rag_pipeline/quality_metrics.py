@@ -6,7 +6,7 @@ All adhere to the strategy pattern as currently implemented.
 import abc
 import typing
 
-from parea.evals import general, rag
+from parea.evals import general
 from parea.schemas import log
 
 from . import mad_skillz
@@ -81,12 +81,18 @@ class SelfCheckEval(BaseEvaluation):
         self,
         query: str,
         output: str,
+        use_local: bool,
     ) -> None:
-        super().__init__(query, context="", output=output)
+        super().__init__(
+            query,
+            context="",
+            output=output,
+        )
+        self.use_local = use_local
 
     @typing.override
     def evaluate(self) -> float:
-        _result = mad_skillz.self_check.self_check(self._log)
+        _result = mad_skillz.self_check.self_check(self._log, self.use_local)
         return _result if _result is not None else 0
 
 

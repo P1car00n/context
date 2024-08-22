@@ -10,13 +10,12 @@ from parea.evals.utils import call_openai, sent_tokenize
 from parea.schemas.log import Log
 
 
-def self_check(log: Log) -> float | None:
+def self_check(log: Log, use_llamafile: bool) -> float | None:
     """Copy of self_check."""
     question = log.inputs["question"]
 
     n_sampled_outputs = 5
     sampled_outputs = []
-    use_llamafile = True
     for _ in range(n_sampled_outputs):
         if use_llamafile:
             response = llamafile.Llamafile().invoke(f"Question: {question}")
